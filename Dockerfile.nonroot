@@ -12,6 +12,15 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
 COPY mcp-server/package.json ./mcp-server/
 COPY vendor ./vendor
 ENV HUSKY=0
+RUN set -eux; \
+    for f in \
+      vendor/tooleasy-pymupdf-wasm/tooleasy-pymupdf-wasm-0.11.16.tgz \
+      vendor/tooleasy-gs-wasm/tooleasy-gs-wasm-0.1.1.tgz \
+      vendor/tooleasy-pdfium/tooleasy-pdfium-8ff5002c6cd5.tgz \
+      vendor/tooleasy-viewer/tooleasy-viewer-8ff5002c6cd5.tgz; \
+    do \
+      test -s "$f" || (echo "Missing vendor tarball: $f (ensure vendor/*.tgz are committed)" >&2; exit 1); \
+    done
 RUN pnpm config set fetch-retries 5 && \
     pnpm config set fetch-retry-mintimeout 60000 && \
     pnpm config set fetch-retry-maxtimeout 300000 && \

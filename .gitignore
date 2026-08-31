@@ -52,6 +52,6 @@ libreoffice-wasm-package
 # test 
 dist-test
 test
-# Sibling checkouts of the engine/viewer forks
+# Sibling checkouts of the engine/viewer forks (repo root only)
 tooleasy-pdfium-viewer/
-tooleasy-pymupdf-wasm/
+/tooleasy-pymupdf-wasm/
