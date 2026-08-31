@@ -33,29 +33,36 @@ docker run -d --name tooleasy -p 8080:8080 --restart unless-stopped tooleasy:lat
 
 ## Docker Compose / Podman Compose
 
-Use the repo's `docker-compose.yml` (builds `tooleasy:latest`):
+Use the repo's `docker-compose.yml` (production-oriented: `tooleasy:local`, `127.0.0.1:18081`, `ROBOTS_NOINDEX=true`):
 
 ```yaml
 services:
   tooleasy:
-    build: .
-    image: tooleasy:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SIMPLE_MODE: 'false'
+        SITE_URL: 'https://usetooleasy.com'
+    image: tooleasy:local
     container_name: tooleasy
-    ports:
-      - '8080:8080'
     restart: unless-stopped
-    healthcheck:
-      test: ['CMD', 'wget', '--spider', '-q', 'http://localhost:8080']
-      interval: 30s
-      timeout: 10s
-      retries: 3
+    ports:
+      - '127.0.0.1:18081:8080'
+    environment:
+      - ROBOTS_NOINDEX=true
 ```
+
+For local development on port 8080 without `ROBOTS_NOINDEX`, use `docker-compose.dev.yml` instead.
 
 Run:
 
 ```bash
-# Docker Compose
-docker compose up -d
+# Production-style (localhost:18081 only)
+docker compose up -d --build
+
+# Local dev (localhost:8080)
+docker compose -f docker-compose.dev.yml up -d --build
 
 # Podman Compose
 podman-compose up -d

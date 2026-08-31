@@ -69,7 +69,7 @@ Advanced PDF features (compress, OCR, encrypt, convert to Word, etc.) run in the
 
 - Dev: `pnpm run dev`
 - Production build: `pnpm run build`
-- Docker: `docker compose up` (service name: `tooleasy`)
+- Docker: `docker compose up` (service name: `tooleasy`, image: `tooleasy:local`)
 
 Utility tools appear under **Utility Tools** on the home page. PDF tools are unchanged from the original toolkit.
 

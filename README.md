@@ -38,7 +38,7 @@ Open http://localhost:5173
 docker compose up -d --build
 ```
 
-Builds and runs **`tooleasy:latest`** locally (no registry pull).
+Builds **`tooleasy:local`** and listens on `127.0.0.1:18081` (production `docker-compose.yml`). For local dev on port 8080, use `docker compose -f docker-compose.dev.yml up -d --build`.
 
 ### MCP server (for AI agents)
 

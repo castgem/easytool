@@ -29,10 +29,7 @@ cd /path/to/tooleasy
 docker compose up -d --build
 ```
 
-> [!TIP]
-> Use `SIMPLE_MODE=true` at build time to hide the marketing homepage and show tools only. Same image name: `tooleasy:latest`. See [Docker self-hosting guide](/self-hosting/docker).
-
-Then open `http://localhost:8080` in your browser.
+Then open `http://127.0.0.1:18081` on the server (or your reverse proxy upstream).
 
 > [!NOTE]
 > If you are preparing an air-gapped OCR deployment, you must host the OCR text-layer fonts internally in addition to the Tesseract worker, core runtime, and traineddata files. The full setup is documented in [Self-Hosting](/self-hosting/), including `VITE_OCR_FONT_BASE_URL` and the bundled `ocr-fonts/` directory.
