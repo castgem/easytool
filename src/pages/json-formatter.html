@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON Formatter - ToolEasy</title>
+    <meta
+      name="description"
+      content="Format and validate JSON in your browser. Private, no upload."
+    />
+    <link href="/src/css/styles.css" rel="stylesheet" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+  </head>
+  <body class="antialiased bg-gray-900">
+    {{> navbar }}
+    <div class="min-h-screen flex items-center justify-center p-4">
+      <div
+        class="bg-gray-800 rounded-xl shadow-xl p-8 max-w-3xl w-full text-gray-200 border border-gray-700"
+      >
+        <button
+          id="back-to-tools"
+          class="flex items-center gap-2 text-indigo-400 hover:text-indigo-300 mb-6 font-semibold"
+        >
+          <i data-lucide="arrow-left"></i>
+          <span>Back to Tools</span>
+        </button>
+        <h1 class="text-2xl font-bold text-white mb-2">JSON Formatter</h1>
+        <p class="text-gray-400 mb-6">
+          Pretty-print and validate JSON. Runs entirely in your browser.
+        </p>
+        <textarea
+          id="input"
+          rows="10"
+          class="w-full bg-gray-900 border border-gray-600 rounded-lg p-3 mb-4 font-mono text-sm"
+          placeholder='{"hello":"world"}'
+        ></textarea>
+        <div class="flex flex-wrap gap-3 mb-4">
+          <button
+            id="format-btn"
+            class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 rounded-lg font-semibold"
+          >
+            Format
+          </button>
+          <button
+            id="minify-btn"
+            class="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg font-semibold"
+          >
+            Minify
+          </button>
+          <button
+            id="copy-btn"
+            class="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg font-semibold"
+          >
+            Copy
+          </button>
+        </div>
+        <pre
+          id="output"
+          class="w-full bg-gray-900 border border-gray-600 rounded-lg p-3 font-mono text-sm min-h-[8rem] whitespace-pre-wrap"
+        ></pre>
+        <p id="error" class="text-red-400 mt-3 hidden"></p>
+      </div>
+    </div>
+    {{> footer }}
+    <script type="module" src="/src/js/logic/json-formatter-page.ts"></script>
+  </body>
+</html>

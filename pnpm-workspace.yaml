@@ -1,0 +1,9 @@
+packages:
+  - '.'
+  - 'mcp-server'
+
+onlyBuiltDependencies:
+  - core-js
+  - esbuild
+  - rete
+  - tesseract.js

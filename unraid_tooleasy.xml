@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>tooleasy</Name>
+  <Repository>tooleasy</Repository>
+  <Registry/>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/castgem/easytool</Support>
+  <Project>https://github.com/castgem/easytool</Project>
+  <Overview>ToolEasy — privacy-first PDF and utility tools, MCP-ready for AI agents.&#13;
+&#13;
+Build locally: docker compose up -d&#13;
+https://github.com/castgem/easytool</Overview>
+  <Category>Tools:</Category>
+  <WebUI>http://[IP]:[PORT:8080]/</WebUI>
+  <TemplateURL/>
+  <Icon>https://raw.githubusercontent.com/castgem/easytool/main/public/images/favicon.svg</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="Web Port for Nginx and GUI" Target="8080" Default="8080" Mode="tcp" Description="Port used for ToolEasy web UI" Type="Port" Display="always" Required="false" Mask="false">8080</Config>
+  <TailscaleStateDir/>
+</Container>

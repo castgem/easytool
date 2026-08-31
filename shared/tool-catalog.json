@@ -1,0 +1,134 @@
+[
+  {
+    "id": "merge-pdf",
+    "name": "Merge PDF",
+    "category": "PDF · Organize",
+    "description": "Combine multiple PDF files into a single document. Preserves page order.",
+    "kind": "pdf",
+    "webPath": "/merge-pdf.html",
+    "mcpExecutable": true
+  },
+  {
+    "id": "split-pdf",
+    "name": "Split PDF",
+    "category": "PDF · Organize",
+    "description": "Extract a page range from a PDF into a new file. Pages are 1-indexed.",
+    "kind": "pdf",
+    "webPath": "/split-pdf.html",
+    "mcpExecutable": true
+  },
+  {
+    "id": "rotate-pdf",
+    "name": "Rotate PDF",
+    "category": "PDF · Edit",
+    "description": "Rotate all pages in a PDF by 90, 180, or 270 degrees.",
+    "kind": "pdf",
+    "webPath": "/rotate-pdf.html",
+    "mcpExecutable": true
+  },
+  {
+    "id": "extract-pages",
+    "name": "Extract Pages",
+    "category": "PDF · Organize",
+    "description": "Extract specific pages (by number) from a PDF.",
+    "kind": "pdf",
+    "webPath": "/extract-pages.html",
+    "mcpExecutable": true
+  },
+  {
+    "id": "pdf-page-count",
+    "name": "PDF Page Count",
+    "category": "PDF · Analyze",
+    "description": "Return the number of pages in a PDF.",
+    "kind": "pdf",
+    "mcpExecutable": true
+  },
+  {
+    "id": "base64-encode",
+    "name": "Base64 Encode",
+    "category": "Utility · Encoding",
+    "description": "Encode UTF-8 text to Base64.",
+    "kind": "utility",
+    "webPath": "/base64-tool.html",
+    "mcpExecutable": true
+  },
+  {
+    "id": "base64-decode",
+    "name": "Base64 Decode",
+    "category": "Utility · Encoding",
+    "description": "Decode Base64 text to UTF-8.",
+    "kind": "utility",
+    "webPath": "/base64-tool.html",
+    "mcpExecutable": true
+  },
+  {
+    "id": "json-format",
+    "name": "JSON Format",
+    "category": "Utility · Data",
+    "description": "Pretty-print and validate JSON.",
+    "kind": "utility",
+    "webPath": "/json-formatter.html",
+    "mcpExecutable": true
+  },
+  {
+    "id": "hash-text",
+    "name": "Hash Text",
+    "category": "Utility · Crypto",
+    "description": "Compute SHA-256 hash of a UTF-8 string.",
+    "kind": "utility",
+    "webPath": "/hash-generator.html",
+    "mcpExecutable": true
+  },
+  {
+    "id": "url-encode",
+    "name": "URL Encode",
+    "category": "Utility · Encoding",
+    "description": "Percent-encode a string for use in URLs.",
+    "kind": "utility",
+    "mcpExecutable": true
+  },
+  {
+    "id": "url-decode",
+    "name": "URL Decode",
+    "category": "Utility · Encoding",
+    "description": "Decode a percent-encoded URL string.",
+    "kind": "utility",
+    "mcpExecutable": true
+  },
+  {
+    "id": "compress-pdf",
+    "name": "Compress PDF",
+    "category": "PDF · Optimize",
+    "description": "Reduce PDF file size. Full compression runs in the browser with WASM.",
+    "kind": "pdf",
+    "webPath": "/compress-pdf.html",
+    "mcpExecutable": false
+  },
+  {
+    "id": "ocr-pdf",
+    "name": "OCR PDF",
+    "category": "PDF · Convert",
+    "description": "Make scanned PDFs searchable with OCR (browser-based).",
+    "kind": "pdf",
+    "webPath": "/ocr-pdf.html",
+    "mcpExecutable": false
+  },
+  {
+    "id": "pdf-to-docx",
+    "name": "PDF to Word",
+    "category": "PDF · Convert",
+    "description": "Convert PDF to DOCX in the browser.",
+    "kind": "pdf",
+    "webPath": "/pdf-to-docx.html",
+    "mcpExecutable": false
+  },
+  {
+    "id": "encrypt-pdf",
+    "name": "Encrypt PDF",
+    "category": "PDF · Security",
+    "description": "Password-protect a PDF (browser-based).",
+    "kind": "pdf",
+    "webPath": "/encrypt-pdf.html",
+    "mcpExecutable": false
+  }
+]
