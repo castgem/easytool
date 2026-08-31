@@ -2,7 +2,7 @@
 
 ToolEasy is an **AI-agent-callable online toolkit**: browser-based PDF tools plus utilities (JSON, Base64, hashing) and more on the way — discoverable and partially executable via **MCP** (Model Context Protocol).
 
-Repository: https://github.com/castgem/easytool
+Product site: https://www.usetooleasy.com
 
 ## Quick start (MCP)
 
@@ -43,19 +43,19 @@ For development without building:
 
 ## MCP tools
 
-| Tool | Description |
-|------|-------------|
-| `list_tools` | Full catalog: PDF + utility tools, MCP vs web-only |
-| `get_tool_schema` | Input schema for an MCP-executable tool |
-| `merge_pdf` | Merge base64 PDFs |
-| `split_pdf` | Extract page range |
-| `rotate_pdf` | Rotate all pages (90/180/270°) |
-| `extract_pages` | Extract pages by number |
-| `pdf_page_count` | Count pages |
-| `base64_encode` / `base64_decode` | Text ↔ Base64 |
-| `json_format` | Pretty-print JSON |
-| `hash_text` | SHA-256 hash |
-| `url_encode` / `url_decode` | URL encoding |
+| Tool                              | Description                                        |
+| --------------------------------- | -------------------------------------------------- |
+| `list_tools`                      | Full catalog: PDF + utility tools, MCP vs web-only |
+| `get_tool_schema`                 | Input schema for an MCP-executable tool            |
+| `merge_pdf`                       | Merge base64 PDFs                                  |
+| `split_pdf`                       | Extract page range                                 |
+| `rotate_pdf`                      | Rotate all pages (90/180/270°)                     |
+| `extract_pages`                   | Extract pages by number                            |
+| `pdf_page_count`                  | Count pages                                        |
+| `base64_encode` / `base64_decode` | Text ↔ Base64                                      |
+| `json_format`                     | Pretty-print JSON                                  |
+| `hash_text`                       | SHA-256 hash                                       |
+| `url_encode` / `url_decode`       | URL encoding                                       |
 
 **PDF inputs/outputs** use **base64** strings (no `data:` prefix required).
 

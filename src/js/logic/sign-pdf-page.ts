@@ -141,7 +141,7 @@ async function updateFileDisplay() {
   signState.file = result.file;
   nameSpan.textContent = result.file.name;
   metaSpan.textContent = `${formatBytes(result.file.size)} • ${result.pdf.numPages} pages`;
-  result.pdf.destroy();
+  void result.pdf.cleanup();
 }
 
 async function setupSignTool() {

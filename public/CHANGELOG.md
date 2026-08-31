@@ -13,4 +13,4 @@ All notable changes to ToolEasy are documented here.
 
 ## Earlier history
 
-Prior releases (PDF toolkit features, i18n, WASM tooling) predate the ToolEasy rebrand. See the [repository history](https://github.com/castgem/easytool/commits/main) for details.
+Prior releases predate the ToolEasy rebrand and are not published separately.

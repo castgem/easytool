@@ -1,7 +1,7 @@
 apiVersion: v2
 name: tooleasy
 description: ToolEasy static frontend served by NGINX
-icon: https://raw.githubusercontent.com/castgem/easytool/main/public/favicon.ico
+icon: https://www.usetooleasy.com/images/favicon.ico
 type: application
 
 # This is the chart version. This version number should be incremented each time you make changes

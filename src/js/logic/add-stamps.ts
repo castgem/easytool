@@ -260,7 +260,7 @@ function setupAnnotationViewer(iframe: HTMLIFrameElement) {
 async function onPdfSelected(file: File) {
   const result = await loadPdfWithPasswordPrompt(file);
   if (!result) return;
-  result.pdf.destroy();
+  void result.pdf.cleanup();
   selectedFile = result.file;
   updateFileList();
   if (saveStampedBtn) saveStampedBtn.classList.remove('hidden');

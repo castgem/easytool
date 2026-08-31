@@ -11,8 +11,8 @@ Host ToolEasy on your own server using Nginx.
 ## Step 1: Build the Project
 
 ```bash
-git clone https://github.com/castgem/easytool.git
-cd easytool
+# Copy your ToolEasy source package to the server
+cd /path/to/tooleasy
 pnpm install
 pnpm run build
 ```

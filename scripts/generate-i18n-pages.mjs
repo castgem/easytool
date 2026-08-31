@@ -8,10 +8,9 @@ const __dirname = path.dirname(__filename);
 
 const DIST_DIR = path.resolve(__dirname, '../dist');
 const LOCALES_DIR = path.resolve(__dirname, '../public/locales');
-const SITE_URL = (process.env.SITE_URL || 'https://www.usetooleasy.com').replace(
-  /\/+$/,
-  ''
-);
+const SITE_URL = (
+  process.env.SITE_URL || 'https://www.usetooleasy.com'
+).replace(/\/+$/, '');
 const BASE_PATH = (process.env.BASE_URL || '/').replace(/\/$/, '');
 
 const languages = fs.readdirSync(LOCALES_DIR).filter((file) => {
@@ -83,11 +82,7 @@ function injectOrganizationLd(document) {
     name: 'ToolEasy',
     url: SITE_URL,
     logo: `${SITE_URL}/images/favicon.svg`,
-    sameAs: [
-      'https://github.com/castgem/easytool',
-      'https://x.com/usetooleasy',
-      'https://github.com/castgem/easytool',
-    ],
+    sameAs: ['https://x.com/usetooleasy', 'https://discord.gg/Bgq3Ay3f2w'],
   };
   const script = document.createElement('script');
   script.setAttribute('type', 'application/ld+json');

@@ -141,7 +141,7 @@ async function runSanitize() {
     }
     if (loaderModal) loaderModal.classList.remove('hidden');
     if (loaderText) loaderText.textContent = 'Sanitizing PDF...';
-    loaded.pdf.destroy();
+    void loaded.pdf.cleanup();
     pageState.file = loaded.file;
     const result = await sanitizePdf(new Uint8Array(loaded.bytes), options);
 

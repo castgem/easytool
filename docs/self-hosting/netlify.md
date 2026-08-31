@@ -2,30 +2,28 @@
 
 [Netlify](https://netlify.com) provides excellent static site hosting with a generous free tier.
 
-## One-Click Deploy
+## Manual deployment (pre-built)
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/castgem/easytool)
+1. Build or obtain a ToolEasy `dist` package (`pnpm run build`, or use a `dist-{version}.zip` from your distribution).
+2. Log in to [Netlify](https://app.netlify.com).
+3. Add a new site → **Deploy manually**.
+4. Upload the `dist` folder contents (or your zip).
+5. Configure [required security headers](#configuration-file) below.
 
-## Manual Deployment
+## CI deployment (private source)
 
-### Step 1: Connect Repository
+1. Log in to [Netlify](https://app.netlify.com).
+2. Add a new site → **Import an existing project**.
+3. Connect your **private** Git provider and select the ToolEasy repository.
+4. Use these build settings:
 
-1. Log in to [Netlify](https://app.netlify.com)
-2. Click "Add new site" → "Import an existing project"
-3. Connect your GitHub account
-4. Select your ToolEasy fork
-
-### Step 2: Configure Build Settings
-
-| Setting           | Value           |
-| ----------------- | --------------- |
+| Setting           | Value            |
+| ----------------- | ---------------- |
 | Build command     | `pnpm run build` |
-| Publish directory | `dist`          |
-| Node version      | 18+             |
+| Publish directory | `dist`           |
+| Node version      | 20+              |
 
-### Step 3: Deploy
-
-Click "Deploy site" and wait for the build.
+5. Click **Deploy site**.
 
 ## Configuration File
 
@@ -37,7 +35,7 @@ Create `netlify.toml` in your project root:
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
 
 # Required security headers for SharedArrayBuffer (used by LibreOffice WASM)
 [[headers]]

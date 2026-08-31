@@ -262,7 +262,7 @@ Start editing to see the magic happen!
 
 export class MarkdownEditor {
   private container: HTMLElement;
-  private md: MarkdownIt;
+  private md: InstanceType<typeof MarkdownIt>;
   private editor: HTMLTextAreaElement | null = null;
   private preview: HTMLElement | null = null;
   private onBack?: () => void;
@@ -319,7 +319,13 @@ export class MarkdownEditor {
           self: MarkdownItRendererSelf
         ) => self.renderToken(tokens, idx, options);
 
-    this.md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
+    this.md.renderer.rules.link_open = ((
+      tokens: MarkdownItToken[],
+      idx: number,
+      options: MarkdownItOptions,
+      env: unknown,
+      self: MarkdownItRendererSelf
+    ) => {
       const token = tokens[idx] as unknown as MarkdownItToken;
       token.attrSet('target', '_blank');
       token.attrSet('rel', 'noopener noreferrer');
@@ -330,7 +336,7 @@ export class MarkdownEditor {
         env as unknown,
         self as unknown as MarkdownItRendererSelf
       );
-    };
+    }) as unknown as typeof this.md.renderer.rules.link_open;
   }
 
   private render(): void {
@@ -636,9 +642,9 @@ export class MarkdownEditor {
     }
   }
 
-  private createMarkdownIt(): MarkdownIt {
+  private createMarkdownIt(): InstanceType<typeof MarkdownIt> {
     // Use preset if commonmark or zero
-    let md: MarkdownIt;
+    let md: InstanceType<typeof MarkdownIt>;
     if (this.currentPreset === 'commonmark') {
       md = new MarkdownIt('commonmark');
     } else if (this.currentPreset === 'zero') {
@@ -675,7 +681,7 @@ export class MarkdownEditor {
         .use(ins) // Inserted text: ++text++ -> <ins>text</ins>
         .use(mark) // Marked text: ==text== -> <mark>text</mark>
         .use(taskLists, { enabled: true, label: true, labelAfter: true }) // Task lists: - [x] done
-        .use(anchor, { permalink: false }) // Header anchors
+        .use(anchor) // Header anchors
         .use(tocDoneRight); // Table of contents: ${toc}
     }
 

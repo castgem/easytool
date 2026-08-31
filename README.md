@@ -5,7 +5,7 @@
 
 **ToolEasy** (usetooleasy.com) is an **AI-agent-callable** online toolkit: 100+ privacy-first tools in the browser — starting with PDF, plus JSON, Base64, hashing, and more — with an **MCP server** for Cursor, Claude, and custom agents.
 
-Repository: [github.com/castgem/easytool](https://github.com/castgem/easytool)
+Website: [usetooleasy.com](https://www.usetooleasy.com)
 
 ---
 
@@ -53,12 +53,12 @@ Register `mcp-server/dist/index.js` in your MCP client — details in [AGENTS.md
 
 ## Custom branding
 
-| Variable | Description |
-|----------|-------------|
-| `VITE_BRAND_NAME` | App name (default: ToolEasy) |
-| `VITE_BRAND_LOGO` | Logo path under `public/` |
-| `VITE_FOOTER_TEXT` | Footer HTML/text |
-| `SITE_URL` | Canonical URL for SEO builds |
+| Variable           | Description                  |
+| ------------------ | ---------------------------- |
+| `VITE_BRAND_NAME`  | App name (default: ToolEasy) |
+| `VITE_BRAND_LOGO`  | Logo path under `public/`    |
+| `VITE_FOOTER_TEXT` | Footer HTML/text             |
+| `SITE_URL`         | Canonical URL for SEO builds |
 
 ---
 

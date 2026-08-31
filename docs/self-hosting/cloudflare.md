@@ -10,12 +10,12 @@
 
 ## Build Configuration
 
-| Setting                | Value           |
-| ---------------------- | --------------- |
-| Framework preset       | None            |
+| Setting                | Value            |
+| ---------------------- | ---------------- |
+| Framework preset       | None             |
 | Build command          | `pnpm run build` |
-| Build output directory | `dist`          |
-| Root directory         | `/`             |
+| Build output directory | `dist`           |
+| Root directory         | `/`              |
 
 ## Environment Variables
 
@@ -151,4 +151,4 @@ DOCKER_BUILDKIT=1 docker build \
   -t your-tooleasy .
 ```
 
-> **Note:** See [README](https://github.com/castgem/easytool#digital-signature-cors-proxy-required) for HMAC signature setup.
+> **Note:** See [CORS proxy documentation](/self-hosting/cors-proxy) for HMAC signature setup.

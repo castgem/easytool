@@ -92,7 +92,7 @@ async function handleFiles(files: FileList) {
 
     pageState.pdfDoc = await loadPdfDocument(result.bytes);
     pageState.file = result.file;
-    result.pdf.destroy();
+    void result.pdf.cleanup();
 
     updateFileDisplay();
     document.getElementById('options-panel')?.classList.remove('hidden');

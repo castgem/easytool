@@ -134,7 +134,7 @@ async function handleFileUpload(file: File) {
   try {
     const result = await loadPdfWithPasswordPrompt(file);
     if (!result) return;
-    result.pdf.destroy();
+    void result.pdf.cleanup();
     currentFile = result.file;
     updateFileDisplay();
     await setupFormViewer();

@@ -197,9 +197,7 @@ function initializePage(): void {
         }
         state.sigImageData = (await readFileAsArrayBuffer(file)) as ArrayBuffer;
         state.sigImageType = file.type.replace('image/', '') as
-          | 'png'
-          | 'jpeg'
-          | 'webp';
+          'png' | 'jpeg' | 'webp';
 
         if (sigImageThumb && sigImagePreview) {
           const url = URL.createObjectURL(file);
@@ -318,7 +316,7 @@ async function updatePdfDisplay(): Promise<void> {
     state.pdfBytes = new Uint8Array(result.bytes);
     nameSpan.textContent = result.file.name;
     metaSpan.textContent = `${formatBytes(result.file.size)} • ${t('tools:digitalSignPdf.pageCount', { count: result.pdf.numPages })}`;
-    result.pdf.destroy();
+    void result.pdf.cleanup();
   }
 }
 
@@ -670,7 +668,7 @@ async function processSignature(): Promise<void> {
       state.pdfFile = pageCountResult.file;
       state.pdfBytes = new Uint8Array(pageCountResult.bytes);
       numPages = pageCountResult.pdf.numPages;
-      pageCountResult.pdf.destroy();
+      void pageCountResult.pdf.cleanup();
     }
 
     if (sigPageSelect) {

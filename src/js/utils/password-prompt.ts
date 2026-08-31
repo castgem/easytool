@@ -147,7 +147,7 @@ function validatePasswordWithPdfjs(
 
     task.promise
       .then((doc) => {
-        doc.destroy();
+        void doc.cleanup();
         if (!settled) {
           settled = true;
           resolve(true);
@@ -178,7 +178,7 @@ async function isFileEncrypted(file: File): Promise<boolean> {
 
     task.promise
       .then((doc) => {
-        doc.destroy();
+        void doc.cleanup();
         if (!settled) {
           settled = true;
           resolve(false);

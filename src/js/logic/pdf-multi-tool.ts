@@ -537,7 +537,7 @@ async function loadPdfs(files: File[]) {
         hideLoading();
         const pwResult = await loadPdfWithPasswordPrompt(file);
         if (!pwResult) continue;
-        pwResult.pdf.destroy();
+        void pwResult.pdf.cleanup();
         arrayBuffer = pwResult.bytes as ArrayBuffer;
 
         const pdfDoc = await loadPdfDocument(arrayBuffer);
@@ -955,7 +955,7 @@ async function handleInsertPdf(e: Event) {
   try {
     const pwResult = await loadPdfWithPasswordPrompt(file);
     if (!pwResult) return;
-    pwResult.pdf.destroy();
+    void pwResult.pdf.cleanup();
 
     const pdfDoc = await loadPdfDocument(pwResult.bytes);
     currentPdfDocs.push(pdfDoc);

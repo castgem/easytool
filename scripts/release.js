@@ -133,10 +133,10 @@ function main() {
   console.log(`🎉 Release v${newVersion} complete!`);
   console.log(`📦 Distribution: dist-${newVersion}.zip`);
   console.log(`📦 Distribution (simple): dist-simple-${newVersion}.zip`);
-  console.log(`🐳 Docker: docker compose up -d  (builds image tooleasy:latest locally)`);
   console.log(
-    `🏷️  GitHub release: https://github.com/castgem/easytool/releases/tag/${tagName}`
+    `🐳 Docker: docker compose up -d  (builds image tooleasy:latest locally)`
   );
+  console.log(`📦 Release package: dist-${newVersion}.zip`);
 }
 
 main();

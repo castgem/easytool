@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
           }
           const pageCount = result.pdf.numPages;
-          result.pdf.destroy();
+          void result.pdf.cleanup();
           state.files[0] = result.file;
           state.pdfDoc = await loadPdfDocument(result.bytes);
           metaSpan.textContent = `${formatBytes(file.size)} • ${pageCount} pages`;
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
             showLoader('Rendering page previews...');
             throw new Error('No PDF document loaded');
           }
-          result.pdf.destroy();
+          void result.pdf.cleanup();
           state.files[0] = result.file;
           state.pdfDoc = await loadPdfDocument(result.bytes);
           showLoader('Rendering page previews...');

@@ -7,16 +7,16 @@
   <MyIP/>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support>https://github.com/castgem/easytool</Support>
-  <Project>https://github.com/castgem/easytool</Project>
+  <Support>https://www.usetooleasy.com/contact.html</Support>
+  <Project>https://www.usetooleasy.com</Project>
   <Overview>ToolEasy — privacy-first PDF and utility tools, MCP-ready for AI agents.&#13;
 &#13;
 Build locally: docker compose up -d&#13;
-https://github.com/castgem/easytool</Overview>
+https://www.usetooleasy.com</Overview>
   <Category>Tools:</Category>
   <WebUI>http://[IP]:[PORT:8080]/</WebUI>
   <TemplateURL/>
-  <Icon>https://raw.githubusercontent.com/castgem/easytool/main/public/images/favicon.svg</Icon>
+  <Icon>https://www.usetooleasy.com/images/favicon.svg</Icon>
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>

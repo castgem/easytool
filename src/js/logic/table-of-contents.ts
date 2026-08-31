@@ -96,7 +96,7 @@ async function handleFileSelect(file: File) {
 
   const result = await loadPdfWithPasswordPrompt(file);
   if (!result) return;
-  result.pdf.destroy();
+  void result.pdf.cleanup();
   pdfFile = result.file;
   generateBtn.disabled = false;
   renderFileDisplay(pdfFile);

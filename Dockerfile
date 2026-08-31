@@ -81,8 +81,8 @@ RUN --mount=type=secret,id=VITE_CORS_PROXY_URL,required=false \
 # Production stage
 FROM quay.io/nginx/nginx-unprivileged:alpine-slim
 
-LABEL org.opencontainers.image.source="https://github.com/castgem/easytool"
-LABEL org.opencontainers.image.url="https://github.com/castgem/easytool"
+LABEL org.opencontainers.image.source="https://www.usetooleasy.com"
+LABEL org.opencontainers.image.url="https://www.usetooleasy.com"
 
 # global arg to local arg
 ARG BASE_URL

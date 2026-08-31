@@ -1,31 +1,28 @@
 # Deploy to Vercel
 
-[Vercel](https://vercel.com) offers the easiest deployment experience for static sites.
+[Vercel](https://vercel.com) offers a straightforward deployment experience for static sites.
 
-## One-Click Deploy
+## Manual deployment (pre-built)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/castgem/easytool)
+1. Build or obtain a ToolEasy `dist` package (`pnpm run build`).
+2. Use the Vercel CLI or dashboard to deploy the `dist` directory as a static site.
 
-## Manual Deployment
+## CI deployment (private source)
 
-### Step 1: Fork the Repository
-
-Fork [castgem/easytool](https://github.com/castgem/easytool) to your GitHub account.
-
-### Step 2: Import to Vercel
+### Step 1: Import your repository
 
 1. Go to [vercel.com/new](https://vercel.com/new)
-2. Select your forked repository
+2. Connect your **private** Git provider and import the ToolEasy project
 3. Configure the project:
 
-| Setting          | Value           |
-| ---------------- | --------------- |
-| Framework Preset | Vite            |
+| Setting          | Value            |
+| ---------------- | ---------------- |
+| Framework Preset | Vite             |
 | Build Command    | `pnpm run build` |
-| Output Directory | `dist`          |
+| Output Directory | `dist`           |
 | Install Command  | `pnpm install`   |
 
-### Step 3: Environment Variables (Optional)
+### Step 2: Environment Variables (Optional)
 
 Add these if needed:
 
@@ -37,9 +34,9 @@ Add these if needed:
 | `VITE_FOOTER_TEXT`      | Custom footer/copyright text                                |
 | `VITE_DEFAULT_LANGUAGE` | Default UI language (e.g. `fr`, `de`, `es`)                 |
 
-### Step 4: Deploy
+### Step 3: Deploy
 
-Click "Deploy" and wait for the build to complete.
+Click **Deploy** and wait for the build to complete.
 
 ## Custom Domain
 

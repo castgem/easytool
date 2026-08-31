@@ -5,8 +5,8 @@ ToolEasy can be self-hosted on your own infrastructure. This guide covers variou
 ## Quick Start with Docker / Podman
 
 ```bash
-git clone https://github.com/castgem/easytool.git
-cd easytool
+# Copy your ToolEasy source package to the server
+cd /path/to/tooleasy
 docker compose up -d --build
 ```
 
@@ -62,8 +62,8 @@ See [Docker deployment guide](/self-hosting/docker) for full Quadlet documentati
 ## Building from Source
 
 ```bash
-git clone https://github.com/castgem/easytool.git
-cd easytool
+# Copy your ToolEasy source package to the server
+cd /path/to/tooleasy
 pnpm install
 pnpm run build
 ```
@@ -78,7 +78,7 @@ pnpm run build
 docker build --build-arg SIMPLE_MODE=true -t tooleasy:latest .
 ```
 
-See [SIMPLE_MODE.md](https://github.com/castgem/easytool/blob/main/SIMPLE_MODE.md).
+See [Docker self-hosting guide](/self-hosting/docker).
 
 ### Custom branding
 
@@ -295,8 +295,8 @@ For networks with no internet access (government, healthcare, financial, etc.). 
 The included `prepare-airgap.sh` script automates the entire process — downloading WASM packages, building the Docker image, and producing a self-contained bundle with a setup script.
 
 ```bash
-git clone https://github.com/castgem/easytool.git
-cd easytool
+# Copy your ToolEasy source package to the server
+cd /path/to/tooleasy
 
 # Show supported OCR language codes (for --ocr-languages)
 bash scripts/prepare-airgap.sh --list-ocr-languages
@@ -380,8 +380,8 @@ curl -fsSL https://raw.githack.com/googlefonts/noto-fonts/main/hinted/ttf/NotoSa
 **Step 2: Build the Docker image with internal URLs**
 
 ```bash
-git clone https://github.com/castgem/easytool.git
-cd easytool
+# Copy your ToolEasy source package to the server
+cd /path/to/tooleasy
 
 docker build \
   --build-arg VITE_WASM_PYMUPDF_URL=https://internal-server.example.com/wasm/pymupdf/ \
@@ -453,7 +453,7 @@ VITE_OCR_FONT_BASE_URL=https://internal-server.example.com/wasm/ocr/fonts
 
 ### Hosting Your Own WASM Proxy
 
-If you need to serve WASM files with proper CORS headers, you can deploy a simple proxy. See the [Cloudflare WASM Proxy guide](https://github.com/castgem/easytool/blob/main/cloudflare/WASM-PROXY.md) for an example implementation.
+If you need to serve WASM files with proper CORS headers, you can deploy a simple proxy. See the [CORS proxy documentation](/self-hosting/cors-proxy) for an example implementation.
 
 ::: tip Why Separate?
 This separation keeps the core app lightweight; WASM files are loaded at runtime, not bundled in the source.
@@ -461,11 +461,11 @@ This separation keeps the core app lightweight; WASM files are loaded at runtime
 
 ## System Requirements
 
-| Requirement | Minimum                             |
-| ----------- | ----------------------------------- |
+| Requirement | Minimum                                      |
+| ----------- | -------------------------------------------- |
 | Storage     | ~100 MB (core without optional WASM modules) |
-| RAM         | 512 MB                              |
-| CPU         | Any modern processor                |
+| RAM         | 512 MB                                       |
+| CPU         | Any modern processor                         |
 
 ::: tip
 ToolEasy is a static site—there's no database or backend server required!

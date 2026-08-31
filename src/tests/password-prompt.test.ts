@@ -33,7 +33,7 @@ function createMockFile(name: string, size = 100): File {
 }
 
 interface MockLoadingTask {
-  promise: Promise<{ destroy: () => Promise<void> }>;
+  promise: Promise<{ cleanup: () => Promise<void> }>;
   onPassword: ((callback: (pw: string) => void, reason: number) => void) | null;
   destroy: () => Promise<void>;
 }
@@ -43,7 +43,7 @@ function mockDestroy() {
 }
 
 function createNonEncryptedTask(): MockLoadingTask {
-  const mockDoc = { destroy: mockDestroy() };
+  const mockDoc = { cleanup: mockDestroy() };
   const task: MockLoadingTask = {
     promise: Promise.resolve(mockDoc),
     onPassword: null,
@@ -74,7 +74,7 @@ function createEncryptedTask(): MockLoadingTask {
 
 function createPasswordValidationTask(isValid: boolean): MockLoadingTask {
   if (isValid) {
-    const mockDoc = { destroy: mockDestroy() };
+    const mockDoc = { cleanup: mockDestroy() };
     return {
       promise: Promise.resolve(mockDoc),
       onPassword: null,
@@ -625,7 +625,7 @@ describe('batchDecryptIfNeeded with batch modal (multiple encrypted)', () => {
 describe('loadPdfWithPasswordPrompt', () => {
   it('should return pdf, bytes, and file for non-encrypted file', async () => {
     const file = createMockFile('test.pdf', 50);
-    const mockDoc = { destroy: vi.fn() };
+    const mockDoc = { cleanup: vi.fn() };
 
     mockGetPDFDocument.mockImplementation(() => ({
       promise: Promise.resolve(mockDoc),

@@ -133,7 +133,7 @@ async function updateUI() {
         resetState();
         return;
       }
-      result.pdf.destroy();
+      void result.pdf.cleanup();
       pageState.file = result.file;
       showLoader('Loading PDF...');
 

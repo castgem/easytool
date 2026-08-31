@@ -7,10 +7,7 @@ import { createIcons, icons } from 'lucide';
 import '@phosphor-icons/web/regular';
 import * as pdfjsLib from 'pdfjs-dist';
 import '../css/styles.css';
-import {
-  escapeHtml,
-  formatShortcutDisplay,
-} from './utils/helpers.js';
+import { escapeHtml, formatShortcutDisplay } from './utils/helpers.js';
 import {
   initI18n,
   applyTranslations,
@@ -60,13 +57,6 @@ const init = async () => {
       const heroSection = document.getElementById('hero-section');
       if (heroSection) {
         heroSection.style.display = 'none';
-      }
-
-      const githubLink = document.querySelector(
-        'a[href*="github.com/castgem/easytool"]'
-      );
-      if (githubLink) {
-        (githubLink as HTMLElement).style.display = 'none';
       }
 
       const featuresSection = document.getElementById('features-section');

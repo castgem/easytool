@@ -343,7 +343,7 @@ async function handleFileSelect(files: FileList | null) {
       try {
         const result = await loadPdfWithPasswordPrompt(file);
         if (!result) return;
-        result.pdf.destroy();
+        void result.pdf.cleanup();
 
         pageState.file = result.file;
         pageState.pdfDoc = await loadPdfDocument(result.bytes);

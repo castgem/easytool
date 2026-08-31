@@ -69,7 +69,7 @@ async function convert() {
     hideLoader();
     const pwResult = await loadPdfWithPasswordPrompt(file);
     if (!pwResult) return;
-    pwResult.pdf.destroy();
+    void pwResult.pdf.cleanup();
     file = pwResult.file;
 
     showLoader('Extracting tables...');

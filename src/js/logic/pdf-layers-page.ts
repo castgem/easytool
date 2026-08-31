@@ -449,7 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ) {
         const result = await loadPdfWithPasswordPrompt(file);
         if (!result) return;
-        result.pdf.destroy();
+        void result.pdf.cleanup();
         currentFile = result.file;
         updateUI();
       } else {

@@ -135,7 +135,7 @@ async function handleFile(file: File) {
       return;
     }
 
-    result.pdf.destroy();
+    void result.pdf.cleanup();
     duplexState.file = result.file;
     duplexState.pdfDoc = await loadPdfDocument(result.bytes);
     duplexState.totalPages = duplexState.pdfDoc.getPageCount();

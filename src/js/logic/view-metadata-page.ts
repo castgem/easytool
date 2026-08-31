@@ -218,11 +218,9 @@ async function displayMetadata() {
 
     // Interactive Form Fields Section
     const fieldsSection = createSection('Interactive Form Fields');
-    if (fieldObjects && Object.keys(fieldObjects).length > 0) {
-      for (const fieldName in fieldObjects) {
-        const field = (
-          fieldObjects as Record<string, Array<{ fieldValue?: unknown }>>
-        )[fieldName][0];
+    if (fieldObjects && fieldObjects.size > 0) {
+      for (const [fieldName, fields] of fieldObjects) {
+        const field = fields[0] as { fieldValue?: unknown };
         const value = field.fieldValue || '- Not Set -';
         fieldsSection.ul.appendChild(createListItem(fieldName, String(value)));
       }
@@ -263,7 +261,7 @@ async function displayMetadata() {
     }
     metadataDisplay.appendChild(xmpSection.wrapper);
 
-    pdfjsDoc.destroy();
+    void pdfjsDoc.cleanup();
     createIcons({ icons });
   } catch (e) {
     console.error('Failed to view metadata or fields:', e);

@@ -214,7 +214,8 @@ export default defineConfig({
         },
 
         socialLinks: [
-            { icon: 'github', link: 'https://github.com/castgem/easytool' }
+            { icon: 'x', link: 'https://x.com/usetooleasy' },
+            { icon: 'discord', link: 'https://discord.gg/Bgq3Ay3f2w' }
         ],
 
         footer: {

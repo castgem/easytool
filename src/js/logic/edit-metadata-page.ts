@@ -227,7 +227,7 @@ async function updateUI() {
         return;
       }
       showLoader('Loading PDF...');
-      result.pdf.destroy();
+      void result.pdf.cleanup();
       pageState.file = result.file;
       pageState.pdfDoc = await loadPdfDocument(result.bytes);
       hideLoader();

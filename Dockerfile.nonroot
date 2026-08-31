@@ -72,8 +72,8 @@ RUN --mount=type=secret,id=VITE_CORS_PROXY_URL,required=false \
 # Production stage — uses standard nginx (starts as root, drops to PUID/PGID)
 FROM nginx:alpine-slim
 
-LABEL org.opencontainers.image.source="https://github.com/castgem/easytool"
-LABEL org.opencontainers.image.url="https://github.com/castgem/easytool"
+LABEL org.opencontainers.image.source="https://www.usetooleasy.com"
+LABEL org.opencontainers.image.url="https://www.usetooleasy.com"
 
 ARG BASE_URL
 

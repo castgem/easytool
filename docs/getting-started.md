@@ -24,14 +24,13 @@ Visit [usetooleasy.com](https://usetooleasy.com) to use ToolEasy instantly—no 
 > `http://localhost` works for local testing because browsers treat loopback as trustworthy. `http://192.168.x.x` or other LAN IPs usually do not, so Word/Excel/PowerPoint conversions will require HTTPS when accessed from other devices on your network.
 
 ```bash
-# Clone and run (builds image tooleasy:latest locally)
-git clone https://github.com/castgem/easytool.git
-cd easytool
+# Copy your ToolEasy source package to the server, then:
+cd /path/to/tooleasy
 docker compose up -d --build
 ```
 
 > [!TIP]
-> Use `SIMPLE_MODE=true` at build time to hide the marketing homepage and show tools only. Same image name: `tooleasy:latest`. See [SIMPLE_MODE.md](https://github.com/castgem/easytool/blob/main/SIMPLE_MODE.md).
+> Use `SIMPLE_MODE=true` at build time to hide the marketing homepage and show tools only. Same image name: `tooleasy:latest`. See [Docker self-hosting guide](/self-hosting/docker).
 
 Then open `http://localhost:8080` in your browser.
 
@@ -41,9 +40,8 @@ Then open `http://localhost:8080` in your browser.
 ### Option 3: Build from Source
 
 ```bash
-# Clone the repository
-git clone https://github.com/castgem/easytool.git
-cd easytool
+# Copy your ToolEasy source package to the server, then:
+cd /path/to/tooleasy
 
 # Install dependencies (requires Node.js 20+ and pnpm via corepack)
 corepack enable pnpm

@@ -34,8 +34,8 @@ If you're self-hosting ToolEasy, you'll need to deploy your own CORS proxy for d
 3. **Clone ToolEasy and update allowed origins**:
 
    ```bash
-   git clone https://github.com/castgem/easytool.git
-   cd easytool/cloudflare
+   # Copy your ToolEasy source package to the server
+   cd /path/to/tooleasy/cloudflare
    ```
 
    Open `cors-proxy-worker.js` and change the `ALLOWED_ORIGINS` array to your domain:

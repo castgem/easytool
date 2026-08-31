@@ -1,66 +1,48 @@
 # Hosting ToolEasy as a static website
 
-As an alternative to running ToolEasy locally or in a Docker container, you can easily host it as a set of static web pages. Here are a few examples:
+As an alternative to running ToolEasy locally or in a Docker container, you can host it as a set of static web pages.
 
 ## Netlify
 
-### Netlify - static deployment
+### Static deployment (upload a build)
 
-One of the simplest ways to host ToolEasy is to create a project at [Netlify](https://www.netlify.com/) and create a static deployment. You can accomplish this by first downloading the pre-built distribution file from our [GitHub releases](https://github.com/castgem/easytool/releases). Each release includes a `dist-{version}.zip` file that contains all necessary files for self-hosting.
+1. Build locally (`pnpm run build`) or use a `dist-{version}.zip` from your ToolEasy distribution.
+2. Create a [Netlify](https://www.netlify.com/) account and log in.
+3. Add a new project → **Deploy manually**.
+4. Upload the `dist` output (or zip).
+5. Your deployment should be live. Optionally rename the project in settings.
 
-1. Go to [ToolEasy Releases](https://github.com/castgem/easytool/releases)
-2. Download the latest `dist-{version}.zip` file
-3. Next, if you have not already done so, create a Netlify account and log in.
-4. From your Netlify projects page, add a new project and select "Deploy manually".
-5. Drag and drop to upload the ToolEasy zip file you downloaded in step 2.
-6. Your ToolEasy deployment should now be working! Optionally, you can go into Project Configuration and change the project name.
+When you receive a newer build, repeat the upload from **Deploys**.
 
-When a new ToolEasy release becomes available, you will need to repeat steps 1-3, then go into "Deploys" and upload the new release.
+### CI deployment (private Git)
 
-### Netlify - dynamic deployment
+1. Add a new Netlify project → **Import an existing project**.
+2. Connect your private Git provider and select the ToolEasy repository.
+3. Build command: `pnpm run build`, publish directory: `dist`, Node 20+.
+4. Deploy.
 
-Alternatively, you can configure a Netlify project to automatically deploy whenever your ToolEasy is updated.
+To enable Simple Mode, add environment variable `SIMPLE_MODE=true` and redeploy.
 
-1. If you have not done so already, create a fork of ToolEasy into your own GitHub account.
-2. If you have not already done so, create a Netlify account and log in.
-3. From your Netlify projects page, add a new project and select 'Import an existing project'.
-4. Select the GitHub button, authorize Netlify, then choose where to install the integration. You can choose 'All repositories' or 'Only select repositories' and choose your ToolEasy fork.
-5. Select your repo and give it a project name. (add environment variables?) Then click the blue 'Deploy' button.
-6. The Netlify build & deploy process will kick off. Once it finishes, you can click on the provided URL `https://[projectname]/netlify.app` to view your deployment of ToolEasy.
-
-Whenever the ToolEasy source code is updated, you can sync the changes into your repo. This will kick off a new build and deploy within Netlify.
-
-If you want to use ToolEasy's simple mode, go into Deploy Settings, then Environment Variables, and Add a variable. Add `SIMPLE_MODE` and set it to `true`. You will need to manually kick a new build to get this to take effect.
+See [Netlify self-hosting guide](docs/self-hosting/netlify.md) for required security headers.
 
 ## Vercel
 
-Vercel provides similar services to Netlify dynamic hosting.
+1. Import your private ToolEasy repository at [vercel.com/new](https://vercel.com/new).
+2. Framework preset: **Vite**, build: `pnpm run build`, output: `dist`.
+3. Deploy.
 
-1. If you have not done so already, create a fork of ToolEasy into your own GitHub account.
-2. If you have not already done so, create a Vercel account and log in.
-3. From your Vercel Overview page, select 'Add new project'
-4. Under 'Import Git Repository' and then choose 'Add GitHub Account'. Follow the prompts to authorize Vercel integration. You can choose 'All repositories' or 'Only select repositories' and choose your ToolEasy fork.
-5. Select 'Import' to import the repo into Vercel.
-6. Under 'Framework Preset', select 'Vite' and save the settings.
-7. The Vercel build & deploy process will kick off. Once it finishes, you can click on the provided link to view your deployment of ToolEasy.
+For Simple Mode, add `SIMPLE_MODE=true` in project environment variables and redeploy.
 
-Whenever the ToolEasy source code is updated, you can sync the changes into your repo. This will kick off a new build and deploy within Vercel.
+See [Vercel self-hosting guide](docs/self-hosting/vercel.md) for COOP/COEP headers.
 
-If you want to use ToolEasy's simple mode, go into Project Settings, then Environment Variables, and Create a new variable. Add `SIMPLE_MODE` and set it to `true`. You will need to redeploy to get this to take effect.
+## Any static host
 
-## GitHub Pages
+You can upload the `dist` folder to S3, Cloudflare Pages, Apache, nginx, or any static file server. Ensure:
 
-You can also host your own instance of ToolEasy using GitHub Pages. An advantage of this over the other options is you are able to do everything in GitHub without any third-party service.
+- `Cross-Origin-Opener-Policy: same-origin`
+- `Cross-Origin-Embedder-Policy: require-corp` (or `credentialless` if your host uses it)
 
-1. If you have not done so already, create a fork of ToolEasy into your own GitHub account.
-2. From your fork, go to `Settings->Pages`, and change the 'Source' to 'GitHub Actions'
-3. Go to `Settings->Secrets and Variables > Actions`, then select 'Variables', and add the repository variable `BASE_URL`. Set the value to `/easytool`. _If you've renamed the repo to something other than easytool, put that path here_.
-4. Go to `Actions` in the top menu, and select 'I understand' to enable Actions
-5. Within Actions, on the left, select 'Deploy static content to Pages', and then on the right select 'Run workflow', and in the dropdown, 'Run Workflow'. The action will now run to build ToolEasy and deploy it to GitHub Pages.
-
-When the build completes, you can find the website at `https://[your-github-username]/easytool`
-
-If/when you merge changes from the source ToolEasy repository, the build and deploy action will automatically be kicked off and the new version will be automatically deployed to GitHub Pages.
+Office conversions require `SharedArrayBuffer` (secure context + those headers).
 
 ## SEO and search engine indexing
 
@@ -90,7 +72,7 @@ emit canonicals, hreflang, and structured data pointing at your domain.
   ```sh
   docker build --build-arg SITE_URL=https://pdf.example.com -t tooleasy-self .
   ```
-- Netlify, Vercel, GitHub Pages, or any other static host: set `SITE_URL`
+- Netlify, Vercel, or any other static host: set `SITE_URL`
   in your project's environment variables and re-deploy. The build script
   reads it during `pnpm run build`.
 

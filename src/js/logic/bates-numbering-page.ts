@@ -184,7 +184,7 @@ async function handleFiles(fileList: FileList) {
       const result = await loadPdfWithPasswordPrompt(file);
       if (!result) continue;
       showLoader('Loading PDFs...');
-      result.pdf.destroy();
+      void result.pdf.cleanup();
       const pdfDoc = await loadPdfDocument(result.bytes);
       files.push({ file: result.file, pageCount: pdfDoc.getPageCount() });
     }
