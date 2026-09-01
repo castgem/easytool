@@ -16,6 +16,9 @@
     "message": "",
     "button": ""
   },
+  "brand": {
+    "name": "好易用"
+  },
   "hero": {
     "title": "为",
     "pdfToolkit": "人类与 AI Agent",
@@ -29,7 +32,7 @@
   "agent": {
     "badge": "首个可被 AI Agent 调用的工具网站",
     "title": "为 AI Agent 而生",
-    "subtitle": "ToolEasy 通过 MCP（Model Context Protocol）开放工具能力。让 Cursor、Claude Desktop 或自建 Agent 以编程方式合并 PDF、格式化 JSON、计算哈希，并发现 100+ 浏览器工具 — 更多实用工具持续增加中。",
+    "subtitle": "好易用 通过 MCP（Model Context Protocol）开放工具能力。让 Cursor、Claude Desktop 或自建 Agent 以编程方式合并 PDF、格式化 JSON、计算哈希，并发现 100+ 浏览器工具 — 更多实用工具持续增加中。",
     "docsCta": "MCP 配置指南",
     "listTools": "list_tools",
     "mergePdf": "merge_pdf",
@@ -40,7 +43,7 @@
   },
   "features": {
     "title": "为什么选择",
-    "toolEasy": "ToolEasy?",
+    "toolEasy": "好易用?",
     "noSignup": {
       "title": "无需注册",
       "description": "即刻开始，无需账户或电子邮件。"
@@ -198,8 +201,8 @@
     "questions": "问题",
     "sectionTitle": "常见问题",
     "isFree": {
-      "question": "ToolEasy 真的免费吗？",
-      "answer": "是的，完全免费。ToolEasy 上的所有工具均可 100% 免费使用，没有文件限制，无需注册，也没有水印。我们相信每个人都应该能够使用简单、强大的 PDF 工具，而无需通过付费墙。"
+      "question": "好易用 真的免费吗？",
+      "answer": "是的，完全免费。好易用 上的所有工具均可 100% 免费使用，没有文件限制，无需注册，也没有水印。我们相信每个人都应该能够使用简单、强大的 PDF 工具，而无需通过付费墙。"
     },
     "areFilesSecure": {
       "question": "我的文件安全吗？它们在哪里处理？",
@@ -207,27 +210,27 @@
     },
     "platforms": {
       "question": "它适用于 Mac、Windows 和手机吗？",
-      "answer": "是的！由于 ToolEasy 完全在您的浏览器中运行，因此它适用于任何带有现代网络浏览器的操作系统，包括 Windows、macOS、Linux、iOS 和 Android。"
+      "answer": "是的！由于 好易用 完全在您的浏览器中运行，因此它适用于任何带有现代网络浏览器的操作系统，包括 Windows、macOS、Linux、iOS 和 Android。"
     },
     "gdprCompliant": {
-      "question": "ToolEasy 符合 GDPR 吗？",
-      "answer": "是的。ToolEasy 完全符合 GDPR。由于所有文件处理都在您的浏览器中本地进行，并且我们从不收集或将您的文件传输到任何服务器，因此我们无法访问您的数据。这确保您始终掌控您的文档。"
+      "question": "好易用 符合 GDPR 吗？",
+      "answer": "是的。好易用 完全符合 GDPR。由于所有文件处理都在您的浏览器中本地进行，并且我们从不收集或将您的文件传输到任何服务器，因此我们无法访问您的数据。这确保您始终掌控您的文档。"
     },
     "dataStorage": {
       "question": "你们会存储或跟踪我的任何文件吗？",
-      "answer": "不。我们从不存储、跟踪或记录您的文件。您在 ToolEasy 上所做的所有操作都在您的浏览器内存中进行，并在您关闭页面后消失。没有上传，没有历史记录，也没有涉及服务器。"
+      "answer": "不。我们从不存储、跟踪或记录您的文件。您在 好易用 上所做的所有操作都在您的浏览器内存中进行，并在您关闭页面后消失。没有上传，没有历史记录，也没有涉及服务器。"
     },
     "different": {
-      "question": "ToolEasy 与其他 PDF 工具有何不同？",
-      "answer": "大多数 PDF 工具将您的文件上传到服务器进行处理。ToolEasy 从不这样做。我们使用安全、现代的网络技术直接在您的浏览器中处理您的文件。这意味着更快的性能、更强的隐私和完全的安心。"
+      "question": "好易用 与其他 PDF 工具有何不同？",
+      "answer": "大多数 PDF 工具将您的文件上传到服务器进行处理。好易用 从不这样做。我们使用安全、现代的网络技术直接在您的浏览器中处理您的文件。这意味着更快的性能、更强的隐私和完全的安心。"
     },
     "browserBased": {
       "question": "基于浏览器的处理如何保护我的安全？",
-      "answer": "通过完全在您的浏览器内部运行，ToolEasy 确保您的文件从未离开您的设备。这消除了服务器黑客攻击、数据泄露或未经授权访问的风险。您的文件始终属于您。"
+      "answer": "通过完全在您的浏览器内部运行，好易用 确保您的文件从未离开您的设备。这消除了服务器黑客攻击、数据泄露或未经授权访问的风险。您的文件始终属于您。"
     },
     "analytics": {
       "question": "你们使用 Cookie 或分析来跟踪我吗？",
-      "answer": "不会。ToolEasy 完全不会追踪您。我们不使用 Cookie、分析工具或任何追踪脚本，即使在正式网站 usetooleasy.com 上也是如此。我们永远不知道您是谁，也不知道您用这些工具做了什么。"
+      "answer": "不会。好易用 完全不会追踪您。我们不使用 Cookie、分析工具或任何追踪脚本，即使在正式网站 usetooleasy.com 上也是如此。我们永远不知道您是谁，也不知道您用这些工具做了什么。"
     }
   },
   "testimonials": {
@@ -237,11 +240,11 @@
   },
   "support": {
     "title": "喜欢这个项目？",
-    "description": "ToolEasy 是一个充满激情的项目，旨在为每个人提供免费、私密且强大的 PDF 工具箱。如果您觉得它有用，请考虑支持它的开发。每一杯咖啡都是莫大的支持！",
+    "description": "好易用 是一个充满激情的项目，旨在为每个人提供免费、私密且强大的 PDF 工具箱。如果您觉得它有用，请考虑支持它的开发。每一杯咖啡都是莫大的支持！",
     "buyMeCoffee": "请我喝杯咖啡"
   },
   "footer": {
-    "copyright": "© 2026 ToolEasy. 保留所有权利。",
+    "copyright": "© 2026 好易用. 保留所有权利。",
     "version": "版本",
     "company": "公司",
     "aboutUs": "关于我们",
@@ -303,7 +306,7 @@
     "philosophy": {
       "label": "我们的核心理念",
       "title": "隐私至上。始终如一。",
-      "description": "在数据被商品化的时代，我们采取不同的方式。ToolEasy 工具的所有处理都在您的浏览器本地进行。这意味着您的文件从未接触我们的服务器，我们从不查看您的文档，也不跟踪您的操作。您的文档保持绝对的私密性。这不仅是一项功能；这是我们的基石。"
+      "description": "在数据被商品化的时代，我们采取不同的方式。好易用 工具的所有处理都在您的浏览器本地进行。这意味着您的文件从未接触我们的服务器，我们从不查看您的文档，也不跟踪您的操作。您的文档保持绝对的私密性。这不仅是一项功能；这是我们的基石。"
     },
     "whyToolEasy": {
       "title": "为什么选择",
@@ -326,7 +329,7 @@
     },
     "cta": {
       "title": "准备好开始了吗？",
-      "description": "加入成千上万信任 ToolEasy 满足日常文档需求的用户。体验隐私和性能带来的不同。",
+      "description": "加入成千上万信任 好易用 满足日常文档需求的用户。体验隐私和性能带来的不同。",
       "button": "探索所有工具"
     }
   },

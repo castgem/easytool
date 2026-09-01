@@ -13,9 +13,11 @@
           class="h-8 w-8"
         />
         <span id="nav-brand" class="text-white font-bold text-xl ml-2">
-          <a href="index.html"
-            >{{#if brandName}}{{brandName}}{{else}}ToolEasy{{/if}}</a
-          >
+          {{#if brandName}}
+          <a href="index.html">{{brandName}}</a>
+          {{else}}
+          <a href="index.html" data-i18n="brand.name">ToolEasy</a>
+          {{/if}}
         </span>
       </div>
 

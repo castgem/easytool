@@ -1,9 +1,10 @@
 <p align="center"><img src="public/images/favicon-no-bg.svg" width="80"></p>
 <h1 align="center">ToolEasy</h1>
+<p align="center"><strong>好易用</strong> — 中文品牌名</p>
 
 # ToolEasy
 
-**ToolEasy** (usetooleasy.com) is an **AI-agent-callable** online toolkit: 100+ privacy-first tools in the browser — starting with PDF, plus JSON, Base64, hashing, and more — with an **MCP server** for Cursor, Claude, and custom agents.
+**ToolEasy**（中文名 **好易用**，usetooleasy.com）is an **AI-agent-callable** online toolkit: 100+ privacy-first tools in the browser — starting with PDF, plus JSON, Base64, hashing, and more — with an **MCP server** for Cursor, Claude, and custom agents.
 
 Website: [usetooleasy.com](https://www.usetooleasy.com)
 

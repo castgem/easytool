@@ -9,9 +9,18 @@
             alt="{{#if brandName}}{{brandName}}{{else}}ToolEasy{{/if}} Logo"
             class="h-8 w-8 mr-2"
           />
+          {{#if brandName}}
           <span id="footer-brand" class="text-white font-bold text-lg"
-            >{{#if brandName}}{{brandName}}{{else}}ToolEasy{{/if}}</span
+            >{{brandName}}</span
           >
+          {{else}}
+          <span
+            id="footer-brand"
+            class="text-white font-bold text-lg"
+            data-i18n="brand.name"
+            >ToolEasy</span
+          >
+          {{/if}}
         </div>
         <p id="footer-copyright" class="text-gray-400 text-sm">
           {{#if footerText}}{{footerText}}{{else}}&copy; 2026 ToolEasy. All

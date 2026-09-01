@@ -16,6 +16,9 @@
     "message": "",
     "button": ""
   },
+  "brand": {
+    "name": "ToolEasy"
+  },
   "hero": {
     "title": "The toolkit for",
     "pdfToolkit": "Humans & AI Agents",

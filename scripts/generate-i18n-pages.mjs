@@ -63,7 +63,7 @@ function buildUrl(langPrefix, pagePath) {
 
 const ORGANIZATION_LD_MARKER = 'data-tooleasy-organization';
 
-function injectOrganizationLd(document) {
+function injectOrganizationLd(document, lang = 'en') {
   if (document.querySelector(`script[${ORGANIZATION_LD_MARKER}]`)) return;
   const existing = document.querySelectorAll(
     'script[type="application/ld+json"]'
@@ -79,7 +79,7 @@ function injectOrganizationLd(document) {
   const data = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'ToolEasy',
+    name: getBrandName(lang),
     url: SITE_URL,
     logo: `${SITE_URL}/images/favicon.svg`,
     sameAs: ['https://x.com/usetooleasy', 'https://discord.gg/Bgq3Ay3f2w'],
@@ -93,6 +93,15 @@ function injectOrganizationLd(document) {
 
 const BREADCRUMB_MARKER = 'data-tooleasy-breadcrumb';
 const BRAND_NAME = process.env.VITE_BRAND_NAME || 'ToolEasy';
+const LOCALIZED_BRAND_NAMES = {
+  zh: '好易用',
+  'zh-TW': '好易用',
+};
+
+function getBrandName(lang) {
+  if (process.env.VITE_BRAND_NAME) return process.env.VITE_BRAND_NAME;
+  return LOCALIZED_BRAND_NAMES[lang] || BRAND_NAME;
+}
 
 function buildLocalHomeHref(lang) {
   const langSegment = lang === 'en' ? '/' : `/${lang}/`;
@@ -105,6 +114,7 @@ function injectToolBreadcrumb(document, lang, toolName, toolUrl) {
   if (document.querySelector(`[${BREADCRUMB_MARKER}]`)) return;
 
   const homeUrl = buildUrl(lang === 'en' ? '' : lang, '');
+  const brandName = getBrandName(lang);
 
   const nav = document.createElement('nav');
   nav.setAttribute('aria-label', 'Breadcrumb');
@@ -114,7 +124,7 @@ function injectToolBreadcrumb(document, lang, toolName, toolUrl) {
   const homeLink = document.createElement('a');
   homeLink.href = buildLocalHomeHref(lang);
   homeLink.className = 'hover:text-indigo-300';
-  homeLink.textContent = BRAND_NAME;
+  homeLink.textContent = brandName;
 
   const sep = document.createElement('span');
   sep.setAttribute('aria-hidden', 'true');
@@ -139,7 +149,7 @@ function injectToolBreadcrumb(document, lang, toolName, toolUrl) {
       {
         '@type': 'ListItem',
         position: 1,
-        name: BRAND_NAME,
+        name: brandName,
         item: homeUrl,
       },
       {
@@ -189,10 +199,11 @@ function processFileForLanguage(
   let description = null;
 
   if (tools[translationKey]) {
+    const brandName = getBrandName(lang);
     title =
       tools[translationKey].pageTitle ||
       (tools[translationKey].name
-        ? `${tools[translationKey].name} - ToolEasy`
+        ? `${tools[translationKey].name} - ${brandName}`
         : null);
     description = tools[translationKey].subtitle;
   }
@@ -255,7 +266,7 @@ function processFileForLanguage(
   const twitterUrl = document.querySelector('meta[name="twitter:url"]');
   if (twitterUrl) twitterUrl.content = localizedUrl;
 
-  injectOrganizationLd(document);
+  injectOrganizationLd(document, lang);
 
   const localizedToolName = resolveToolName(translationKey, tools);
   if (localizedToolName) {
