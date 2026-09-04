@@ -34,20 +34,6 @@ const baseCategories = [
           'Click any paragraph and edit it in place with live reflow, fonts, and styling.',
       },
       {
-        href: import.meta.env.BASE_URL + 'pdf-workflow.html',
-        name: 'PDF Workflow Builder',
-        icon: 'ph-tree-structure',
-        subtitle:
-          'Build custom PDF processing pipelines with a visual node editor.',
-      },
-      {
-        href: import.meta.env.BASE_URL + 'pdf-multi-tool.html',
-        name: 'PDF Multi Tool',
-        icon: 'ph-pencil-ruler',
-        subtitle:
-          'Merge, Split, Organize, Delete, Rotate, Add Blank Pages, Extract and Duplicate in a unified interface.',
-      },
-      {
         href: import.meta.env.BASE_URL + 'merge-pdf.html',
         name: 'Merge PDF',
         icon: 'ph-browsers',
@@ -612,12 +598,6 @@ const baseCategories = [
         name: 'Edit Attachments',
         icon: 'ph-paperclip-horizontal',
         subtitle: 'View or remove attachments in your PDF.',
-      },
-      {
-        href: import.meta.env.BASE_URL + 'pdf-multi-tool.html',
-        name: 'PDF Multi Tool',
-        icon: 'ph-pencil-ruler',
-        subtitle: 'Full-featured PDF editor with page management.',
       },
       {
         href: import.meta.env.BASE_URL + 'pdf-layers.html',

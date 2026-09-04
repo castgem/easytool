@@ -82,7 +82,6 @@ function injectOrganizationLd(document, lang = 'en') {
     name: getBrandName(lang),
     url: SITE_URL,
     logo: `${SITE_URL}/images/favicon.svg`,
-    sameAs: ['https://x.com/usetooleasy', 'https://discord.gg/Bgq3Ay3f2w'],
   };
   const script = document.createElement('script');
   script.setAttribute('type', 'application/ld+json');
@@ -94,8 +93,8 @@ function injectOrganizationLd(document, lang = 'en') {
 const BREADCRUMB_MARKER = 'data-tooleasy-breadcrumb';
 const BRAND_NAME = process.env.VITE_BRAND_NAME || 'ToolEasy';
 const LOCALIZED_BRAND_NAMES = {
-  zh: '好易用',
-  'zh-TW': '好易用',
+  zh: '唤星易用',
+  'zh-TW': '唤星易用',
 };
 
 function getBrandName(lang) {
@@ -212,10 +211,6 @@ function processFileForLanguage(
     document.title = title;
     const metaTitle = document.querySelector('meta[property="og:title"]');
     if (metaTitle) metaTitle.content = title;
-    const metaTwitterTitle = document.querySelector(
-      'meta[name="twitter:title"]'
-    );
-    if (metaTwitterTitle) metaTwitterTitle.content = title;
   }
 
   if (description) {
@@ -225,10 +220,6 @@ function processFileForLanguage(
       'meta[property="og:description"]'
     );
     if (metaOgDesc) metaOgDesc.content = description;
-    const metaTwitterDesc = document.querySelector(
-      'meta[name="twitter:description"]'
-    );
-    if (metaTwitterDesc) metaTwitterDesc.content = description;
   }
 
   document
@@ -263,8 +254,6 @@ function processFileForLanguage(
 
   const ogUrl = document.querySelector('meta[property="og:url"]');
   if (ogUrl) ogUrl.content = localizedUrl;
-  const twitterUrl = document.querySelector('meta[name="twitter:url"]');
-  if (twitterUrl) twitterUrl.content = localizedUrl;
 
   injectOrganizationLd(document, lang);
 
@@ -354,8 +343,6 @@ function updateEnglishFile(filePath, originalContent) {
 
   const ogUrl = document.querySelector('meta[property="og:url"]');
   if (ogUrl) ogUrl.content = canonicalUrl;
-  const twitterUrl = document.querySelector('meta[name="twitter:url"]');
-  if (twitterUrl) twitterUrl.content = canonicalUrl;
 
   injectOrganizationLd(document);
 

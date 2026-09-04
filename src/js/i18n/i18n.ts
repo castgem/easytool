@@ -275,11 +275,16 @@ export const rewriteLinks = (): void => {
       } else {
         newHref = `/${currentLang}${href}`;
       }
-    } else if (href === '' || href === 'index.html') {
+    } else if (
+      href === '' ||
+      href === 'index.html' ||
+      href.startsWith('index.html#')
+    ) {
+      const hash = href.includes('#') ? href.slice(href.indexOf('#')) : '';
       if (basePath && basePath !== '/') {
-        newHref = `${basePath}/${currentLang}/`;
+        newHref = `${basePath}/${currentLang}/${hash}`;
       } else {
-        newHref = `/${currentLang}/`;
+        newHref = `/${currentLang}/${hash}`;
       }
     } else {
       newHref = `/${currentLang}/${href}`;

@@ -5,6 +5,8 @@
     "contact": "联系我们",
     "licensing": "许可",
     "allTools": "所有工具",
+    "pdfWorkflow": "PDF 工作流",
+    "pdfMultiTool": "PDF 多功能",
     "agents": "Agent 接入",
     "docs": "文档",
     "openMainMenu": "打开主菜单",
@@ -17,71 +19,75 @@
     "button": ""
   },
   "brand": {
-    "name": "好易用"
+    "name": "唤星易用"
   },
   "hero": {
-    "title": "为",
-    "pdfToolkit": "人类与 AI Agent",
-    "builtForPrivacy": "— PDF 及更多工具，隐私优先，支持 MCP",
-    "noSignups": "无需注册",
-    "unlimitedUse": "100+ 工具",
-    "worksOffline": "MCP 就绪",
-    "startUsing": "浏览工具",
-    "agentCta": "Agent 集成"
+    "title": "好用的",
+    "pdfToolkit": "在线 PDF 工具",
+    "builtForPrivacy": "文件本地处理，不上传云端",
+    "noSignups": "不用注册",
+    "unlimitedUse": "100+ 常用工具",
+    "worksOffline": "隐私安心",
+    "startUsing": "开始使用",
+    "agentCta": "了解更多",
+    "popularTools": "热门工具",
+    "searchResults": "搜索结果",
+    "noResults": "没有找到相关工具",
+    "browseAll": "浏览全部工具"
   },
   "agent": {
-    "badge": "首个可被 AI Agent 调用的工具网站",
-    "title": "为 AI Agent 而生",
-    "subtitle": "好易用 通过 MCP（Model Context Protocol）开放工具能力。让 Cursor、Claude Desktop 或自建 Agent 以编程方式合并 PDF、格式化 JSON、计算哈希，并发现 100+ 浏览器工具 — 更多实用工具持续增加中。",
-    "docsCta": "MCP 配置指南",
+    "badge": "本地处理",
+    "title": "文件不离开你的电脑",
+    "subtitle": "合并、拆分、压缩、转换 PDF，以及格式化 JSON、编解码等实用功能，都在浏览器里完成，无需把文件传到服务器。",
+    "docsCta": "了解更多",
     "listTools": "list_tools",
     "mergePdf": "merge_pdf",
-    "privacyNote": "MCP 服务在本地运行；浏览器工具文件不离开你的设备。"
+    "privacyNote": "关闭网页后，处理过程即结束，我们不会保存你的文件。"
   },
   "usedBy": {
     "title": "被众多公司和个人信赖，包括"
   },
   "features": {
-    "title": "为什么选择",
-    "toolEasy": "好易用?",
+    "title": "为什么用",
+    "toolEasy": "唤星易用",
     "noSignup": {
-      "title": "无需注册",
-      "description": "即刻开始，无需账户或电子邮件。"
+      "title": "不用注册",
+      "description": "打开网页就能用，不用填邮箱、不用登录。"
     },
     "noUploads": {
-      "title": "无需上传",
-      "description": "100% 客户端处理，您的文件从未离开您的设备。"
+      "title": "不上传文件",
+      "description": "处理在你自己的浏览器里完成，文件不会传到我们的服务器。"
     },
     "foreverFree": {
-      "title": "永久免费",
-      "description": "所有工具免费，无试用期，无付费墙。"
+      "title": "免费使用",
+      "description": "常用工具可直接使用，没有试用到期，也没有隐藏收费。"
     },
     "noLimits": {
-      "title": "无限制",
-      "description": "随心使用，无任何隐形限制。"
+      "title": "随用随走",
+      "description": "需要时打开就用，不强制绑账号，也不设复杂限额。"
     },
     "batchProcessing": {
-      "title": "Agent 可调用",
-      "description": "MCP 服务支持合并/拆分/旋转 PDF，以及 JSON、Base64、哈希等实用工具。"
+      "title": "工具齐全",
+      "description": "支持合并、拆分、压缩、转换等 PDF 操作，还有 JSON、Base64 等小工具。"
     },
     "lightningFast": {
-      "title": "极速处理",
-      "description": "在浏览器中即时处理文件，无需等待。"
+      "title": "用着顺手",
+      "description": "选好文件点一下就能处理，不用排队上传、下载。"
     }
   },
   "tools": {
-    "title": "开始使用",
+    "title": "选择",
     "toolsLabel": "工具",
-    "subtitle": "点击工具以打开文件上传",
-    "searchPlaceholder": "搜索工具 (例如 '合并', '分割'...)",
+    "subtitle": "点选下方工具，再选择要处理的文件",
+    "searchPlaceholder": "搜索工具，例如：合并、拆分、压缩",
     "backToTools": "返回工具列表",
-    "firstLoadNotice": "首次加载需要一点时间，因为我们正在下载转换引擎。之后所有加载将即时完成。"
+    "firstLoadNotice": "第一次打开可能稍慢，正在加载处理组件；之后会更快。"
   },
   "upload": {
     "clickToSelect": "点击选择文件",
     "orDragAndDrop": "或将文件拖放到此处",
     "pdfOrImages": "PDF 或图片",
-    "filesNeverLeave": "您的文件从未离开您的设备。",
+    "filesNeverLeave": "文件只在你本机处理，不会上传。",
     "addMore": "添加更多文件",
     "clearAll": "清空所有",
     "clearFiles": "清除文件",
@@ -114,12 +120,12 @@
   },
   "howItWorks": {
     "title": "使用方法",
-    "step1Title": "上传文件",
-    "step1": "点击或拖放您的文件到此处",
+    "step1Title": "选择文件",
+    "step1": "点击或把文件拖到页面里",
     "step2Title": "处理",
-    "step2": "点击处理按钮开始",
+    "step2": "点一下处理按钮",
     "step3Title": "下载",
-    "step3": "立即保存处理后的文件"
+    "step3": "保存处理好的文件"
   },
   "relatedTools": {
     "title": "相关 PDF 工具"
@@ -178,22 +184,22 @@
     "proceed": "继续"
   },
   "compliance": {
-    "title": "您的数据从未离开您的设备",
-    "weKeep": "我们会保持",
-    "yourInfoSafe": "您的信息安全",
-    "byFollowingStandards": "，遵循全球安全标准。",
-    "processingLocal": "所有处理都在您的设备上本地进行。",
+    "title": "文件不会离开你的电脑",
+    "weKeep": "处理都在本地完成，",
+    "yourInfoSafe": "我们看不到你的文件内容",
+    "byFollowingStandards": "。",
+    "processingLocal": "选好工具、选好文件，直接在浏览器里处理。",
     "gdpr": {
-      "title": "GDPR 合规",
-      "description": "保护欧盟境内个人的个人数据和隐私。"
+      "title": "不上传",
+      "description": "合并、拆分、压缩等都在你本机完成，不会把文件传到我们的服务器。"
     },
     "ccpa": {
-      "title": "CCPA 合规",
-      "description": "赋予加州居民对其个人信息的收集、使用和共享的权利。"
+      "title": "不留存",
+      "description": "我们不会保存你的文档，也不会记录你用过哪些文件。"
     },
     "hipaa": {
-      "title": "HIPAA 合规",
-      "description": "制定美国医疗系统中处理敏感健康信息的保障措施。"
+      "title": "更省心",
+      "description": "敏感材料不必经第三方服务器中转，少一层外传风险。"
     }
   },
   "faq": {
@@ -201,50 +207,46 @@
     "questions": "问题",
     "sectionTitle": "常见问题",
     "isFree": {
-      "question": "好易用 真的免费吗？",
-      "answer": "是的，完全免费。好易用 上的所有工具均可 100% 免费使用，没有文件限制，无需注册，也没有水印。我们相信每个人都应该能够使用简单、强大的 PDF 工具，而无需通过付费墙。"
+      "question": "要收费吗？",
+      "answer": "不用。常用工具可以直接用，不必注册，也不加水印。"
     },
     "areFilesSecure": {
-      "question": "我的文件安全吗？它们在哪里处理？",
-      "answer": "您的文件非常安全，因为它们从未离开您的电脑。所有处理都直接在您的网络浏览器（客户端）中进行。我们从不将您的文件上传到服务器，因此您可以对文档保持完全的隐私和控制。"
+      "question": "文件会传到你们服务器吗？",
+      "answer": "不会。处理在你自己的浏览器里完成，文件不会上传到我们这边。"
     },
     "platforms": {
-      "question": "它适用于 Mac、Windows 和手机吗？",
-      "answer": "是的！由于 好易用 完全在您的浏览器中运行，因此它适用于任何带有现代网络浏览器的操作系统，包括 Windows、macOS、Linux、iOS 和 Android。"
+      "question": "电脑和手机都能用吗？",
+      "answer": "可以。用常见浏览器打开网页即可，Windows、Mac、手机一般都支持。"
     },
     "gdprCompliant": {
-      "question": "好易用 符合 GDPR 吗？",
-      "answer": "是的。好易用 完全符合 GDPR。由于所有文件处理都在您的浏览器中本地进行，并且我们从不收集或将您的文件传输到任何服务器，因此我们无法访问您的数据。这确保您始终掌控您的文档。"
+      "question": "隐私方面怎么保证？",
+      "answer": "文件不上传、不留存。我们拿不到你的文档内容，也就谈不上收集。"
     },
     "dataStorage": {
-      "question": "你们会存储或跟踪我的任何文件吗？",
-      "answer": "不。我们从不存储、跟踪或记录您的文件。您在 好易用 上所做的所有操作都在您的浏览器内存中进行，并在您关闭页面后消失。没有上传，没有历史记录，也没有涉及服务器。"
+      "question": "会不会留下使用记录？",
+      "answer": "不会存你的文件，也不会留处理历史。关掉页面，这次操作就结束了。"
     },
     "different": {
-      "question": "好易用 与其他 PDF 工具有何不同？",
-      "answer": "大多数 PDF 工具将您的文件上传到服务器进行处理。好易用 从不这样做。我们使用安全、现代的网络技术直接在您的浏览器中处理您的文件。这意味着更快的性能、更强的隐私和完全的安心。"
+      "question": "和其他在线 PDF 网站有什么不一样？",
+      "answer": "很多网站会先把文件传到服务器再处理。这里是在你浏览器里直接处理，少一次上传。"
     },
     "browserBased": {
-      "question": "基于浏览器的处理如何保护我的安全？",
-      "answer": "通过完全在您的浏览器内部运行，好易用 确保您的文件从未离开您的设备。这消除了服务器黑客攻击、数据泄露或未经授权访问的风险。您的文件始终属于您。"
+      "question": "为什么强调「本地处理」？",
+      "answer": "文件一直在你设备上，不用经过我们的服务器，泄露面更小，用起来也更踏实。"
     },
     "analytics": {
-      "question": "你们使用 Cookie 或分析来跟踪我吗？",
-      "answer": "不会。好易用 完全不会追踪您。我们不使用 Cookie、分析工具或任何追踪脚本，即使在正式网站 usetooleasy.com 上也是如此。我们永远不知道您是谁，也不知道您用这些工具做了什么。"
+      "question": "会不会用 Cookie 跟踪我？",
+      "answer": "不做用户行为追踪。我们不会用分析工具去看你是谁、用过什么文件。"
     }
   },
-  "testimonials": {
-    "title": "我们的",
-    "users": "用户",
-    "say": "评价"
-  },
   "support": {
-    "title": "喜欢这个项目？",
-    "description": "好易用 是一个充满激情的项目，旨在为每个人提供免费、私密且强大的 PDF 工具箱。如果您觉得它有用，请考虑支持它的开发。每一杯咖啡都是莫大的支持！",
+    "title": "觉得好用？",
+    "description": "唤星易用提供免费的在线 PDF 与实用小工具。若对你有帮助，欢迎支持一下后续维护。",
     "buyMeCoffee": "请我喝杯咖啡"
   },
   "footer": {
-    "copyright": "© 2026 好易用. 保留所有权利。",
+    "copyright": "© 2026 唤星易用. 保留所有权利。",
+    "companyEntity": "广州唤星科技有限公司",
     "version": "版本",
     "company": "公司",
     "aboutUs": "关于我们",
@@ -296,47 +298,47 @@
   "about": {
     "hero": {
       "title": "我们相信 PDF 工具应该是",
-      "subtitle": "快速、私密且免费的。",
-      "noCompromises": "绝不妥协。"
+      "subtitle": "好用、私密、免费。",
+      "noCompromises": "不上传文件，也不用注册。"
     },
     "mission": {
-      "title": "我们的使命",
-      "description": "提供最全面的 PDF 工具箱，尊重您的隐私，且永不收费。我们相信基本的文档工具应该对所有人、在任何地方都触手可及，没有任何障碍。"
+      "title": "关于唤星易用",
+      "description": "做一批好用的在线 PDF 工具：本地处理、不用注册、常用功能免费。"
     },
     "philosophy": {
-      "label": "我们的核心理念",
-      "title": "隐私至上。始终如一。",
-      "description": "在数据被商品化的时代，我们采取不同的方式。好易用 工具的所有处理都在您的浏览器本地进行。这意味着您的文件从未接触我们的服务器，我们从不查看您的文档，也不跟踪您的操作。您的文档保持绝对的私密性。这不仅是一项功能；这是我们的基石。"
+      "label": "理念",
+      "title": "本地处理，更放心",
+      "description": "合并、拆分、压缩等都在你浏览器里完成，文件不会传到我们的服务器。"
     },
     "whyToolEasy": {
       "title": "为什么选择",
       "speed": {
-        "title": "为速度而生",
-        "description": "无需等待上传或从服务器下载。通过使用 WebAssembly 等现代网络技术直接在您的浏览器中处理文件，我们为所有工具提供了无与伦比的速度。"
+        "title": "用着顺手",
+        "description": "不用排队上传下载，选好文件点一下就能处理。"
       },
       "free": {
-        "title": "完全免费",
-        "description": "无试用，无订阅，无隐藏费用，也没有被锁定的 '高级' 功能。我们相信强大的 PDF 工具应该是一种公共设施，而不是盈利中心。"
+        "title": "免费使用",
+        "description": "常用工具可直接用，没有试用到期，也没有隐藏收费。"
       },
       "noAccount": {
-        "title": "无需账户",
-        "description": "立即开始使用任何工具。我们不需要您的电子邮件、密码或任何个人信息。您的工作流程应该是无摩擦且匿名的。"
+        "title": "不用注册",
+        "description": "打开网页就能用，不用填邮箱、不用登录。"
       },
       "growingToolkit": {
-        "title": "开源精神",
-        "description": "以透明度为核心构建。我们利用了像 PDF-lib 和 PDF.js 这样优秀的开源库，并相信社区驱动的力量能使强大的工具惠及每一个人。"
+        "title": "工具在增加",
+        "description": "先把 PDF 常用能力做好，后面还会继续补充实用小工具。"
       }
     },
     "cta": {
-      "title": "准备好开始了吗？",
-      "description": "加入成千上万信任 好易用 满足日常文档需求的用户。体验隐私和性能带来的不同。",
-      "button": "探索所有工具"
+      "title": "开始使用",
+      "description": "在首页搜索或从顶部菜单进入工具即可。",
+      "button": "查看工具"
     }
   },
   "contact": {
     "title": "联系我们",
-    "subtitle": "我们很乐意听到您的声音。无论您有问题、反馈还是功能请求，请随时联系我们。",
-    "email": "您可以直接通过电子邮件联系我们："
+    "subtitle": "有问题、建议或合作意向，欢迎发邮件。",
+    "email": "邮箱："
   },
   "multiTool": {
     "uploadPdfs": "上传 PDF",

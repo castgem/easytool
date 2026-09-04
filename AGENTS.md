@@ -2,7 +2,7 @@
 
 ToolEasy is an **AI-agent-callable online toolkit**: browser-based PDF tools plus utilities (JSON, Base64, hashing) and more on the way — discoverable and partially executable via **MCP** (Model Context Protocol).
 
-Product site: https://www.usetooleasy.com (中文品牌名：**好易用**)
+Product site: https://www.usetooleasy.com (中文品牌名：**唤星易用**)
 
 ## Quick start (MCP)
 

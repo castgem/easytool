@@ -173,64 +173,33 @@ export const injectLanguageSwitcher = (): void => {
     return;
   }
 
-  const footer = document.querySelector('footer');
-  if (!footer) return;
+  const languageColumn = document.getElementById('footer-language-column');
+  if (!languageColumn) return;
 
-  const headings = footer.querySelectorAll('h3');
-  let followUsColumn: HTMLElement | null = null;
+  const switcherContainer = document.createElement('div');
+  switcherContainer.className = 'w-full';
+  const switcher = createLanguageSwitcher();
 
-  headings.forEach((h3) => {
-    if (
-      h3.textContent?.trim() === 'Follow Us' ||
-      h3.textContent?.trim() === 'Folgen Sie uns' ||
-      h3.textContent?.trim() === 'Theo dõi chúng tôi'
-    ) {
-      followUsColumn = h3.parentElement;
-    }
-  });
+  switcher.className = 'relative w-full';
 
-  if (followUsColumn) {
-    const socialIconsContainer = followUsColumn.querySelector('.space-x-4');
-
-    if (socialIconsContainer) {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'inline-flex flex-col gap-4';
-
-      socialIconsContainer.parentNode?.insertBefore(
-        wrapper,
-        socialIconsContainer
-      );
-
-      wrapper.appendChild(socialIconsContainer);
-      const switcher = createLanguageSwitcher();
-
-      switcher.className = 'relative w-full';
-
-      const button = switcher.querySelector('button');
-      if (button) {
-        button.className = `
+  const button = switcher.querySelector('button');
+  if (button) {
+    button.className = `
                     flex items-center justify-between w-full text-sm font-medium
                     bg-gray-800 text-gray-400 border border-gray-700
                     px-3 py-2 rounded-lg transition-colors duration-200
                     hover:text-white hover:border-gray-600
                 `.trim();
-      }
-
-      const dropdown = switcher.querySelector(
-        'div[role="menu"]'
-      ) as HTMLElement | null;
-      if (dropdown) {
-        dropdown.classList.remove('mt-2', 'w-64');
-        dropdown.classList.add('bottom-full', 'mb-2', 'w-full');
-      }
-
-      wrapper.appendChild(switcher);
-    } else {
-      const switcherContainer = document.createElement('div');
-      switcherContainer.className = 'mt-4 w-full';
-      const switcher = createLanguageSwitcher();
-      switcherContainer.appendChild(switcher);
-      followUsColumn.appendChild(switcherContainer);
-    }
   }
+
+  const dropdown = switcher.querySelector(
+    'div[role="menu"]'
+  ) as HTMLElement | null;
+  if (dropdown) {
+    dropdown.classList.remove('mt-2', 'w-64');
+    dropdown.classList.add('bottom-full', 'mb-2', 'w-full');
+  }
+
+  switcherContainer.appendChild(switcher);
+  languageColumn.appendChild(switcherContainer);
 };

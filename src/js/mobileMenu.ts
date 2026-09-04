@@ -5,34 +5,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeIcon = document.getElementById('close-icon');
 
   if (mobileMenuButton && mobileMenu && menuIcon && closeIcon) {
-    // Toggle menu on button click
+    const closeMobileMenu = () => {
+      mobileMenu.classList.add('hidden');
+      menuIcon.classList.remove('hidden');
+      closeIcon.classList.add('hidden');
+      mobileMenuButton.setAttribute('aria-expanded', 'false');
+    };
+
     mobileMenuButton.addEventListener('click', () => {
       const isExpanded =
         mobileMenuButton.getAttribute('aria-expanded') === 'true';
 
-      // Toggle menu visibility
       mobileMenu.classList.toggle('hidden');
-
-      // Toggle icons
       menuIcon.classList.toggle('hidden');
       closeIcon.classList.toggle('hidden');
-
-      // Update aria-expanded for accessibility
       mobileMenuButton.setAttribute('aria-expanded', (!isExpanded).toString());
     });
 
-    // Close menu when clicking on a link
-    const mobileLinks = mobileMenu.querySelectorAll('a');
-    mobileLinks.forEach((link) => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        menuIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
-        mobileMenuButton.setAttribute('aria-expanded', 'false');
-      });
+    // Event delegation so dynamically added tool links also close the menu
+    mobileMenu.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement | null;
+      if (target?.closest('a')) {
+        closeMobileMenu();
+      }
     });
 
-    // Close menu when clicking outside
     document.addEventListener('click', (event) => {
       const target = event.target as Node;
       const isClickInsideMenu = mobileMenu.contains(target);
@@ -43,10 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         !isClickOnButton &&
         !mobileMenu.classList.contains('hidden')
       ) {
-        mobileMenu.classList.add('hidden');
-        menuIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
-        mobileMenuButton.setAttribute('aria-expanded', 'false');
+        closeMobileMenu();
       }
     });
   }

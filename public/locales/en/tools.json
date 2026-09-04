@@ -1,5 +1,6 @@
 {
   "categories": {
+    "utilityTools": "Utility Tools",
     "popularTools": "Popular Tools",
     "editAnnotate": "Edit & Annotate",
     "convertToPdf": "Convert to PDF",
@@ -9,6 +10,18 @@
     "securePdf": "Secure PDF",
     "input": "Input",
     "output": "Output"
+  },
+  "jsonFormatter": {
+    "name": "JSON Formatter",
+    "subtitle": "Validate, pretty-print, or minify JSON in your browser."
+  },
+  "base64Tool": {
+    "name": "Base64 Tool",
+    "subtitle": "Encode and decode UTF-8 text to Base64."
+  },
+  "hashGenerator": {
+    "name": "Hash Generator",
+    "subtitle": "Compute SHA-256 hashes locally — no upload."
   },
   "convertToPdf": "Convert to PDF",
   "pdfMultiTool": {

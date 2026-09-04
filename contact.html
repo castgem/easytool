@@ -1,127 +1,27 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Primary Meta Tags -->
-    <title>Contact ToolEasy - Get in Touch | Support</title>
-    <meta
-      name="description"
-      content="Contact ToolEasy for support, questions, or feedback. Reach us at contact@usetooleasy.com - we're here to help with your PDF needs."
-    />
-    <meta name="author" content="ToolEasy" />
-    <meta name="robots" content="index, follow" />
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://www.usetooleasy.com/contact" />
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.usetooleasy.com/contact" />
-    <meta
-      property="og:title"
-      content="Contact ToolEasy - Get in Touch | Support"
-    />
-    <meta
-      property="og:description"
-      content="Contact ToolEasy for support, questions, or feedback. Reach us at contact@usetooleasy.com - we're here to help with your PDF needs."
-    />
-    <meta
-      property="og:image"
-      content="https://www.usetooleasy.com/images/og-contact.png"
-    />
-    <meta property="og:site_name" content="ToolEasy" />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Contact ToolEasy - Get in Touch | Support"
-    />
-    <meta
-      name="twitter:description"
-      content="Contact ToolEasy for support, questions, or feedback. Reach us at contact@usetooleasy.com - we're here to help with your PDF needs."
-    />
-    <meta
-      name="twitter:image"
-      content="https://www.usetooleasy.com/images/twitter-contact.png"
-    />
-    <meta name="twitter:site" content="@usetooleasy" />
-
-    <link href="/src/css/styles.css" rel="stylesheet" />
-
-    <!-- Web App Manifest -->
-    <link rel="manifest" href="/site.webmanifest" />
-
-    <!-- Favicons -->
-    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="/images/favicon-192x192.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="512x512"
-      href="/images/favicon-512x512.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/images/apple-touch-icon.png"
-    />
-    <link rel="icon" href="/favicon.ico" sizes="32x32" />
-  </head>
-
-  <body class="antialiased bg-gray-900 text-gray-300">
-    {{> navbar }}
-
-    <div id="app" class="min-h-screen container mx-auto p-4 md:p-8">
-      <section id="contact-hero" class="text-center py-16 md:py-24">
-        <h1
-          class="text-4xl md:text-5xl font-bold text-white mb-4"
-          data-i18n="contact.title"
-        >
-          Get in Touch
-        </h1>
-        <p
-          class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto"
-          data-i18n="contact.subtitle"
-        >
-          We'd love to hear from you. Whether you have a question, feedback, or
-          a feature request, please don't hesitate to reach out.
-        </p>
-      </section>
-
-      <div class="max-w-2xl mx-auto text-center py-8">
-        <p class="text-lg text-gray-400">
-          <span data-i18n="contact.email"
-            >You can reach us directly by email at:</span
-          >
-          <a
-            href="mailto:contact@usetooleasy.com"
-            class="text-indigo-400 underline hover:text-indigo-300"
-            >contact@usetooleasy.com</a
-          >
-        </p>
-      </div>
-    </div>
-
-    {{> footer }}
-
-    <script type="module" src="src/js/utils/lucide-init.ts"></script>
-    <script type="module" src="src/js/main.ts"></script>
-    <script type="module" src="src/js/mobileMenu.ts"></script>
-    <!-- JSON-LD Schema -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "ContactPage",
-        "name": "Contact ToolEasy - Get in Touch | Support",
-        "url": "https://www.usetooleasy.com/contact"
-      }
+    <title>联系我们</title>
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="https://www.usetooleasy.com/" />
+    <script>
+      (function () {
+        var langs =
+          /\/(en|ar|be|ru|fr|de|es|zh|zh-TW|vi|tr|id|it|pt|nl|da|sv|ko|ja|uk|sk)(?:\/|$)/;
+        var match = location.pathname.match(langs);
+        var prefix = match ? '/' + match[1] + '/' : '/';
+        location.replace(prefix + '#site-footer');
+      })();
     </script>
+    <meta http-equiv="refresh" content="0;url=/#site-footer" />
+  </head>
+  <body>
+    <p>
+      <a href="mailto:tech@arousestar.com">tech@arousestar.com</a>
+      ·
+      <a href="/#site-footer">前往页脚</a>
+    </p>
   </body>
 </html>

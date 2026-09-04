@@ -1,6 +1,12 @@
 import './utils/map-upsert-polyfill.js';
 import './utils/setup-pdf-worker.js';
 import { categories } from './config/tools.js';
+import {
+  categoryTranslationKeys,
+  toolTranslationKeys,
+} from './config/tool-labels.js';
+import { initToolsMegamenu } from './ui/tools-megamenu.js';
+import { initHeroToolFinder } from './ui/hero-tool-finder.js';
 import { dom, switchView, hideAlert } from './ui.js';
 import { ShortcutsManager } from './logic/shortcuts.js';
 import { createIcons, icons } from 'lucide';
@@ -20,18 +26,66 @@ import {
   isToolDisabled,
   isCurrentPageDisabled,
 } from './utils/disabled-tools.js';
-import {
-  getStoredItem,
-  setStoredItem,
-  removeStoredItem,
-} from './utils/safe-storage.js';
+import { getStoredItem, setStoredItem } from './utils/safe-storage.js';
 declare const __BRAND_NAME__: string;
 
+const CLOSE_TOOL_MESSAGE = 'tooleasy:close-tool';
+
+function isEmbeddedToolView(): boolean {
+  if (new URLSearchParams(window.location.search).get('embed') === '1') {
+    return true;
+  }
+  try {
+    return window.self !== window.top;
+  } catch {
+    return true;
+  }
+}
+
+function initEmbeddedToolChrome(): void {
+  if (!isEmbeddedToolView()) return;
+
+  document.documentElement.classList.add('tool-embed');
+
+  document.addEventListener(
+    'click',
+    (event) => {
+      const target = event.target as HTMLElement | null;
+      const backBtn = target?.closest(
+        '#back-to-tools, [id^="back-to-tools"]'
+      ) as HTMLElement | null;
+      if (!backBtn) return;
+
+      event.preventDefault();
+      event.stopImmediatePropagation();
+
+      try {
+        if (window.parent !== window) {
+          window.parent.postMessage(
+            { type: CLOSE_TOOL_MESSAGE },
+            window.location.origin
+          );
+          return;
+        }
+      } catch {
+        // fall through to home navigation
+      }
+
+      window.location.href = import.meta.env.BASE_URL;
+    },
+    true
+  );
+}
+
 const init = async () => {
+  initEmbeddedToolChrome();
   await initI18n();
   await loadRuntimeConfig();
   injectLanguageSwitcher();
   applyTranslations();
+  initToolsMegamenu();
+  initHeroToolFinder();
+  createIcons({ icons });
 
   if (isCurrentPageDisabled()) {
     document.title = t('disabledTool.title') || 'Tool Unavailable';
@@ -55,7 +109,16 @@ const init = async () => {
   if (__SIMPLE_MODE__) {
     const hideBrandingSections = () => {
       const heroSection = document.getElementById('hero-section');
+      const heroToolFinder = document.getElementById('hero-tool-finder');
       if (heroSection) {
+        // Keep the tool finder usable when branding/hero copy is hidden
+        if (heroToolFinder) {
+          const app = document.getElementById('app');
+          if (app) {
+            app.insertBefore(heroToolFinder, app.firstChild);
+            heroToolFinder.classList.add('hero-tool-finder--standalone');
+          }
+        }
         heroSection.style.display = 'none';
       }
 
@@ -71,16 +134,9 @@ const init = async () => {
         securitySection.style.display = 'none';
       }
 
-      const faqSection = document.getElementById('faq-accordion');
+      const faqSection = document.getElementById('faq');
       if (faqSection) {
         faqSection.style.display = 'none';
-      }
-
-      const testimonialsSection = document.getElementById(
-        'testimonials-section'
-      );
-      if (testimonialsSection) {
-        testimonialsSection.style.display = 'none';
       }
 
       const supportSection = document.getElementById('support-section');
@@ -103,20 +159,6 @@ const init = async () => {
 
       const brandName = __BRAND_NAME__ || 'ToolEasy';
       document.title = `${brandName} - ${t('simpleMode.title')}`;
-
-      const toolsHeader = document.getElementById('tools-header');
-      if (toolsHeader) {
-        const title = toolsHeader.querySelector('h2');
-        const subtitle = toolsHeader.querySelector('p');
-        if (title) {
-          title.textContent = t('simpleMode.title');
-          title.className = 'text-4xl md:text-5xl font-bold text-white mb-3';
-        }
-        if (subtitle) {
-          subtitle.textContent = t('simpleMode.subtitle');
-          subtitle.className = 'text-lg text-gray-400';
-        }
-      }
 
       const app = document.getElementById('app');
       if (app) {
@@ -146,360 +188,6 @@ const init = async () => {
     }
   }
 
-  const categoryTranslationKeys: Record<string, string> = {
-    'Popular Tools': 'tools:categories.popularTools',
-    'Edit & Annotate': 'tools:categories.editAnnotate',
-    'Convert to PDF': 'tools:categories.convertToPdf',
-    'Convert from PDF': 'tools:categories.convertFromPdf',
-    'Organize & Manage': 'tools:categories.organizeManage',
-    'Optimize & Repair': 'tools:categories.optimizeRepair',
-    'Secure PDF': 'tools:categories.securePdf',
-  };
-
-  const toolTranslationKeys: Record<string, string> = {
-    'PDF Workflow Builder': 'tools:pdfWorkflow',
-    'PDF Multi Tool': 'tools:pdfMultiTool',
-    'Merge PDF': 'tools:mergePdf',
-    'Split PDF': 'tools:splitPdf',
-    'Compress PDF': 'tools:compressPdf',
-    'PDF Editor': 'tools:pdfEditor',
-    'Edit PDF Text': 'tools:editPdfText',
-    'JPG to PDF': 'tools:jpgToPdf',
-    'Sign PDF': 'tools:signPdf',
-    'Crop PDF': 'tools:cropPdf',
-    'Extract Pages': 'tools:extractPages',
-    'Duplicate & Organize': 'tools:duplicateOrganize',
-    'Delete Pages': 'tools:deletePages',
-    'Edit Bookmarks': 'tools:editBookmarks',
-    'Table of Contents': 'tools:tableOfContents',
-    'Page Numbers': 'tools:pageNumbers',
-    'Add Page Labels': 'tools:addPageLabels',
-    'Add Watermark': 'tools:addWatermark',
-    'Header & Footer': 'tools:headerFooter',
-    'Invert Colors': 'tools:invertColors',
-    'Background Color': 'tools:backgroundColor',
-    'Change Text Color': 'tools:changeTextColor',
-    'Add Stamps': 'tools:addStamps',
-    'Bates Numbering': 'tools:batesNumbering',
-    'Remove Annotations': 'tools:removeAnnotations',
-    'PDF Form Filler': 'tools:pdfFormFiller',
-    'Create PDF Form': 'tools:createPdfForm',
-    'Remove Blank Pages': 'tools:removeBlankPages',
-    'Images to PDF': 'tools:imageToPdf',
-    'PNG to PDF': 'tools:pngToPdf',
-    'WebP to PDF': 'tools:webpToPdf',
-    'SVG to PDF': 'tools:svgToPdf',
-    'BMP to PDF': 'tools:bmpToPdf',
-    'HEIC to PDF': 'tools:heicToPdf',
-    'TIFF to PDF': 'tools:tiffToPdf',
-    'Text to PDF': 'tools:textToPdf',
-    'JSON to PDF': 'tools:jsonToPdf',
-    'PDF to JPG': 'tools:pdfToJpg',
-    'PDF to PNG': 'tools:pdfToPng',
-    'PDF to WebP': 'tools:pdfToWebp',
-    'PDF to BMP': 'tools:pdfToBmp',
-    'PDF to TIFF': 'tools:pdfToTiff',
-    'PDF to CBZ': 'tools:pdfToCbz',
-    'PDF to Greyscale': 'tools:pdfToGreyscale',
-    'PDF to JSON': 'tools:pdfToJson',
-    'OCR PDF': 'tools:ocrPdf',
-    'Alternate & Mix Pages': 'tools:alternateMerge',
-    'Duplex Collate': 'tools:duplexCollate',
-    'PDF Overlay': 'tools:pdfOverlay',
-    'Organize & Duplicate': 'tools:duplicateOrganize',
-    'Add Attachments': 'tools:addAttachments',
-    'Extract Attachments': 'tools:extractAttachments',
-    'Edit Attachments': 'tools:editAttachments',
-    'Divide Pages': 'tools:dividePages',
-    'Add Blank Page': 'tools:addBlankPage',
-    'Reverse Pages': 'tools:reversePages',
-    'Rotate PDF': 'tools:rotatePdf',
-    'Rotate by Custom Degrees': 'tools:rotateCustom',
-    'N-Up PDF': 'tools:nUpPdf',
-    'Combine to Single Page': 'tools:combineToSinglePage',
-    'View Metadata': 'tools:viewMetadata',
-    'Edit Metadata': 'tools:editMetadata',
-    'PDFs to ZIP': 'tools:pdfsToZip',
-    'Compare PDFs': 'tools:comparePdfs',
-    'Posterize PDF': 'tools:posterizePdf',
-    'Fix Page Size': 'tools:fixPageSize',
-    'Linearize PDF': 'tools:linearizePdf',
-    'Page Dimensions': 'tools:pageDimensions',
-    'Remove Restrictions': 'tools:removeRestrictions',
-    'Repair PDF': 'tools:repairPdf',
-    'Encrypt PDF': 'tools:encryptPdf',
-    'Sanitize PDF': 'tools:sanitizePdf',
-    'Decrypt PDF': 'tools:decryptPdf',
-    'Flatten PDF': 'tools:flattenPdf',
-    'Remove Metadata': 'tools:removeMetadata',
-    'Change Permissions': 'tools:changePermissions',
-    'Email to PDF': 'tools:emailToPdf',
-    'Font to Outline': 'tools:fontToOutline',
-    'Deskew PDF': 'tools:deskewPdf',
-    'Digital Signature': 'tools:digitalSignPdf',
-    'Validate Signature': 'tools:validateSignaturePdf',
-    'Timestamp PDF': 'tools:timestampPdf',
-    'Scanner Effect': 'tools:scannerEffect',
-    'Adjust Colors': 'tools:adjustColors',
-    'Markdown to PDF': 'tools:markdownToPdf',
-    'PDF Booklet': 'tools:pdfBooklet',
-    'Word to PDF': 'tools:wordToPdf',
-    'Excel to PDF': 'tools:excelToPdf',
-    'PowerPoint to PDF': 'tools:powerpointToPdf',
-    'XPS to PDF': 'tools:xpsToPdf',
-    'MOBI to PDF': 'tools:mobiToPdf',
-    'EPUB to PDF': 'tools:epubToPdf',
-    'FB2 to PDF': 'tools:fb2ToPdf',
-    'CBZ to PDF': 'tools:cbzToPdf',
-    'WPD to PDF': 'tools:wpdToPdf',
-    'WPS to PDF': 'tools:wpsToPdf',
-    'XML to PDF': 'tools:xmlToPdf',
-    'Pages to PDF': 'tools:pagesToPdf',
-    'ODG to PDF': 'tools:odgToPdf',
-    'ODS to PDF': 'tools:odsToPdf',
-    'ODP to PDF': 'tools:odpToPdf',
-    'PUB to PDF': 'tools:pubToPdf',
-    'VSD to PDF': 'tools:vsdToPdf',
-    'PSD to PDF': 'tools:psdToPdf',
-    'ODT to PDF': 'tools:odtToPdf',
-    'CSV to PDF': 'tools:csvToPdf',
-    'RTF to PDF': 'tools:rtfToPdf',
-    'PDF to SVG': 'tools:pdfToSvg',
-    'PDF to CSV': 'tools:pdfToCsv',
-    'PDF to Excel': 'tools:pdfToExcel',
-    'PDF to Text': 'tools:pdfToText',
-    'Extract Tables': 'tools:extractTables',
-    'PDF to Word': 'tools:pdfToWord',
-    'Extract Images': 'tools:extractImages',
-    'PDF to Markdown': 'tools:pdfToMarkdown',
-    'Prepare PDF for AI': 'tools:preparePdfForAi',
-    'PDF OCG': 'tools:pdfOcg',
-    'PDF to PDF/A': 'tools:pdfToPdfa',
-    'Rasterize PDF': 'tools:rasterizePdf',
-  };
-
-  // Homepage-only tool grid rendering (not used on individual tool pages)
-  if (dom.toolGrid) {
-    dom.toolGrid.textContent = '';
-
-    let collapsedCategories: string[] = [];
-    try {
-      const stored = getStoredItem('collapsedCategories');
-      if (stored) collapsedCategories = JSON.parse(stored);
-    } catch {
-      removeStoredItem('collapsedCategories');
-    }
-
-    function saveCollapsedCategories() {
-      setStoredItem('collapsedCategories', JSON.stringify(collapsedCategories));
-    }
-
-    const filteredCategories = categories
-      .map((category) => ({
-        ...category,
-        tools: category.tools.filter((tool) => !isToolDisabled(tool.id)),
-      }))
-      .filter((category) => category.tools.length > 0);
-
-    filteredCategories.forEach((category) => {
-      const categoryGroup = document.createElement('div');
-      categoryGroup.className = 'category-group col-span-full';
-
-      const header = document.createElement('button');
-      header.className = 'category-header';
-      header.type = 'button';
-
-      const title = document.createElement('span');
-      const categoryKey = categoryTranslationKeys[category.name];
-      title.textContent = categoryKey ? t(categoryKey) : category.name;
-
-      const chevron = document.createElement('i');
-      chevron.setAttribute('data-lucide', 'chevron-down');
-      chevron.className =
-        'category-chevron w-5 h-5 text-gray-400 transition-transform duration-300';
-
-      header.append(title, chevron);
-
-      const toolsContainer = document.createElement('div');
-      toolsContainer.className =
-        'category-tools grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6';
-
-      const isCollapsed = collapsedCategories.includes(category.name);
-      if (isCollapsed) {
-        categoryGroup.classList.add('collapsed');
-        toolsContainer.style.maxHeight = '0px';
-      }
-
-      toolsContainer.addEventListener('transitionend', (e) => {
-        if ((e as TransitionEvent).propertyName !== 'max-height') return;
-        if (!categoryGroup.classList.contains('collapsed')) {
-          toolsContainer.style.maxHeight = 'none';
-          toolsContainer.style.overflow = 'visible';
-        }
-      });
-
-      header.addEventListener('click', () => {
-        const collapsed = categoryGroup.classList.toggle('collapsed');
-        if (collapsed) {
-          toolsContainer.style.maxHeight = toolsContainer.scrollHeight + 'px';
-          toolsContainer.style.overflow = 'hidden';
-          requestAnimationFrame(() => {
-            toolsContainer.style.maxHeight = '0px';
-          });
-          if (!collapsedCategories.includes(category.name)) {
-            collapsedCategories.push(category.name);
-          }
-        } else {
-          toolsContainer.style.overflow = 'hidden';
-          toolsContainer.style.maxHeight = toolsContainer.scrollHeight + 'px';
-          collapsedCategories = collapsedCategories.filter(
-            (n) => n !== category.name
-          );
-        }
-        saveCollapsedCategories();
-      });
-
-      category.tools.forEach((tool) => {
-        let toolCard: HTMLDivElement | HTMLAnchorElement;
-
-        if (tool.href) {
-          toolCard = document.createElement('a');
-          toolCard.href = tool.href;
-          toolCard.className =
-            'tool-card block bg-gray-800 rounded-xl p-4 cursor-pointer flex flex-col items-center justify-center text-center no-underline hover:shadow-lg transition duration-200';
-        } else {
-          toolCard = document.createElement('div');
-          toolCard.className =
-            'tool-card bg-gray-800 rounded-xl p-4 cursor-pointer flex flex-col items-center justify-center text-center hover:shadow-lg transition duration-200';
-          toolCard.dataset.toolId = getToolId(tool);
-        }
-
-        const icon = document.createElement('i');
-        icon.className = 'w-10 h-10 mb-3 text-indigo-400';
-
-        if (tool.icon.startsWith('ph-')) {
-          icon.className = `ph ${tool.icon} text-4xl mb-3 text-indigo-400`;
-        } else {
-          icon.setAttribute('data-lucide', tool.icon);
-        }
-
-        const toolName = document.createElement('h3');
-        toolName.className = 'font-semibold text-white';
-        const toolKey = toolTranslationKeys[tool.name];
-        toolName.textContent = toolKey ? t(`${toolKey}.name`) : tool.name;
-
-        toolCard.append(icon, toolName);
-
-        if (tool.subtitle) {
-          const toolSubtitle = document.createElement('p');
-          toolSubtitle.className = 'text-xs text-gray-400 mt-1 px-2';
-          toolSubtitle.textContent = toolKey
-            ? t(`${toolKey}.subtitle`)
-            : tool.subtitle;
-          toolCard.appendChild(toolSubtitle);
-        }
-
-        toolsContainer.appendChild(toolCard);
-      });
-
-      categoryGroup.append(header, toolsContainer);
-      dom.toolGrid.appendChild(categoryGroup);
-
-      if (!isCollapsed) {
-        toolsContainer.style.maxHeight = 'none';
-        toolsContainer.style.overflow = 'visible';
-      }
-    });
-
-    const searchBar = document.getElementById('search-bar');
-    const categoryGroups = dom.toolGrid.querySelectorAll('.category-group');
-
-    const searchResultsContainer = document.createElement('div');
-    searchResultsContainer.id = 'search-results';
-    searchResultsContainer.className =
-      'hidden grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 col-span-full';
-    dom.toolGrid.insertBefore(searchResultsContainer, dom.toolGrid.firstChild);
-
-    searchBar.addEventListener('input', () => {
-      // @ts-expect-error TS(2339) FIXME: Property 'value' does not exist on type 'HTMLEleme... Remove this comment to see the full error message
-      const searchTerm = searchBar.value.toLowerCase().trim();
-
-      if (!searchTerm) {
-        searchResultsContainer.classList.add('hidden');
-        searchResultsContainer.innerHTML = '';
-        categoryGroups.forEach((group) => {
-          (group as HTMLElement).style.display = '';
-          const toolCards = group.querySelectorAll('.tool-card');
-          toolCards.forEach((card) => {
-            (card as HTMLElement).style.display = '';
-          });
-        });
-        return;
-      }
-
-      categoryGroups.forEach((group) => {
-        (group as HTMLElement).style.display = 'none';
-      });
-
-      searchResultsContainer.innerHTML = '';
-      searchResultsContainer.classList.remove('hidden');
-
-      const seenToolIds = new Set<string>();
-      const allTools: HTMLElement[] = [];
-
-      categoryGroups.forEach((group) => {
-        const toolCards = Array.from(group.querySelectorAll('.tool-card'));
-
-        toolCards.forEach((card) => {
-          const toolName = (
-            card.querySelector('h3')?.textContent || ''
-          ).toLowerCase();
-          const toolSubtitle = (
-            card.querySelector('p')?.textContent || ''
-          ).toLowerCase();
-          const toolHref =
-            (card as HTMLAnchorElement).href ||
-            (card as HTMLElement).dataset.toolId ||
-            '';
-
-          const toolId =
-            toolHref.split('/').pop()?.replace('.html', '') || toolName;
-
-          const isMatch =
-            toolName.includes(searchTerm) || toolSubtitle.includes(searchTerm);
-          const isDuplicate = seenToolIds.has(toolId);
-
-          if (isMatch && !isDuplicate) {
-            seenToolIds.add(toolId);
-            allTools.push(card.cloneNode(true) as HTMLElement);
-          }
-        });
-      });
-
-      allTools.forEach((tool) => {
-        searchResultsContainer.appendChild(tool);
-      });
-
-      createIcons({ icons });
-    });
-
-    window.addEventListener('keydown', function (e) {
-      const key = e.key.toLowerCase();
-      const isMac = navigator.userAgent.toUpperCase().includes('MAC');
-      const isCtrlK = e.ctrlKey && key === 'k';
-      const isCmdK = isMac && e.metaKey && key === 'k';
-
-      if (isCtrlK || isCmdK) {
-        e.preventDefault();
-        searchBar.focus();
-      }
-    });
-
-    dom.toolGrid.addEventListener('click', () => {
-      // All tools now use href and navigate directly - no modal handling needed
-    });
-  }
-
   if (dom.backToGridBtn) {
     dom.backToGridBtn.addEventListener('click', () => switchView('grid'));
   }
@@ -508,7 +196,7 @@ const init = async () => {
     dom.alertOkBtn.addEventListener('click', hideAlert);
   }
 
-  const faqAccordion = document.getElementById('faq-accordion');
+  const faqAccordion = document.getElementById('faq');
   if (faqAccordion) {
     faqAccordion.addEventListener('click', (e) => {
       // @ts-expect-error TS(2339) FIXME: Property 'closest' does not exist on type 'EventTa... Remove this comment to see the full error message

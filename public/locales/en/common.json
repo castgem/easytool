@@ -5,6 +5,8 @@
     "contact": "Contact",
     "licensing": "Licensing",
     "allTools": "All Tools",
+    "pdfWorkflow": "PDF Workflow",
+    "pdfMultiTool": "PDF Multi Tool",
     "agents": "For Agents",
     "docs": "Docs",
     "openMainMenu": "Open main menu",
@@ -20,62 +22,66 @@
     "name": "ToolEasy"
   },
   "hero": {
-    "title": "The toolkit for",
-    "pdfToolkit": "Humans & AI Agents",
-    "builtForPrivacy": "— PDF & more, privacy-first, MCP-ready",
-    "noSignups": "No Signups",
-    "unlimitedUse": "100+ Tools",
-    "worksOffline": "MCP Ready",
-    "startUsing": "Browse Tools",
-    "agentCta": "Agent Integration"
+    "title": "Simple",
+    "pdfToolkit": "online PDF tools",
+    "builtForPrivacy": "— process files on your device, not in the cloud",
+    "noSignups": "No signup",
+    "unlimitedUse": "100+ tools",
+    "worksOffline": "Private by design",
+    "startUsing": "Get started",
+    "agentCta": "Learn more",
+    "popularTools": "Popular tools",
+    "searchResults": "Search results",
+    "noResults": "No matching tools",
+    "browseAll": "Browse all tools"
   },
   "agent": {
-    "badge": "First agent-callable tool site",
-    "title": "Built for AI Agents",
-    "subtitle": "ToolEasy exposes tools through MCP (Model Context Protocol). Let Cursor, Claude Desktop, or your own agent merge PDFs, format JSON, hash text, and discover 100+ browser tools — with more utilities on the way.",
-    "docsCta": "MCP Setup Guide",
+    "badge": "On-device processing",
+    "title": "Your files stay on your computer",
+    "subtitle": "Merge, split, compress, and convert PDFs—plus handy utilities like JSON formatting—right in your browser. Nothing is uploaded to our servers.",
+    "docsCta": "Learn more",
     "listTools": "list_tools",
     "mergePdf": "merge_pdf",
-    "privacyNote": "Server-side MCP runs locally on your machine. Browser tools keep files on your device."
+    "privacyNote": "When you close the page, the work is done. We don’t keep your files."
   },
   "usedBy": {
     "title": "Used by companies and people working at"
   },
   "features": {
-    "title": "Why choose",
-    "toolEasy": "ToolEasy?",
+    "title": "Why use",
+    "toolEasy": "ToolEasy",
     "noSignup": {
-      "title": "No Signup",
-      "description": "Start instantly, no accounts or emails."
+      "title": "No signup",
+      "description": "Open the page and start. No account or email required."
     },
     "noUploads": {
-      "title": "No Uploads",
-      "description": "100% client-side, your files never leave your device."
+      "title": "No uploads",
+      "description": "Processing happens in your browser. Files aren’t sent to our servers."
     },
     "foreverFree": {
-      "title": "Free to Use",
-      "description": "All tools available without subscriptions or paywalls."
+      "title": "Free to use",
+      "description": "Common tools are ready to use—no trial expiry or hidden paywall."
     },
     "noLimits": {
-      "title": "No Limits",
-      "description": "Use as much as you want, no hidden caps."
+      "title": "Use when you need",
+      "description": "No forced accounts and no complicated quotas."
     },
     "batchProcessing": {
-      "title": "Agent Callable",
-      "description": "MCP server for merge, split, rotate PDFs plus JSON, Base64, and hash utilities."
+      "title": "Plenty of tools",
+      "description": "Merge, split, compress, convert PDFs, plus JSON, Base64, and more."
     },
     "lightningFast": {
-      "title": "Lightning Fast",
-      "description": "Process files instantly in your browser — no waiting or delays."
+      "title": "Straightforward",
+      "description": "Pick a file and go—no waiting in upload queues."
     }
   },
   "tools": {
-    "title": "Get Started with",
-    "toolsLabel": "Tools",
-    "subtitle": "Click a tool to open the file uploader",
-    "searchPlaceholder": "Search for a tool (e.g., 'split', 'organize'...)",
-    "backToTools": "Back to Tools",
-    "firstLoadNotice": "First load takes a moment as we download our conversion engine. After that, all loads will be instant."
+    "title": "Choose a",
+    "toolsLabel": "tool",
+    "subtitle": "Select a tool below, then choose your files",
+    "searchPlaceholder": "Search tools, e.g. merge, split, compress",
+    "backToTools": "Back to tools",
+    "firstLoadNotice": "The first load may take a moment while components download. Later visits are faster."
   },
   "upload": {
     "clickToSelect": "Click to select a file",
@@ -113,13 +119,13 @@
     }
   },
   "howItWorks": {
-    "title": "How It Works",
-    "step1Title": "Upload File",
-    "step1": "Click or drag and drop your file to begin",
+    "title": "How it works",
+    "step1Title": "Choose a file",
+    "step1": "Click or drag your file onto the page",
     "step2Title": "Process",
-    "step2": "Click the process button to start",
+    "step2": "Click the process button",
     "step3Title": "Download",
-    "step3": "Save your processed file instantly"
+    "step3": "Save the finished file"
   },
   "relatedTools": {
     "title": "Related PDF Tools"
@@ -178,22 +184,22 @@
     "proceed": "Proceed"
   },
   "compliance": {
-    "title": "Your data never leaves your device",
-    "weKeep": "We keep",
-    "yourInfoSafe": "your information safe",
-    "byFollowingStandards": "by following global security standards.",
-    "processingLocal": "All the processing happens locally on your device.",
+    "title": "Your files stay on your computer",
+    "weKeep": "Everything runs locally—",
+    "yourInfoSafe": "we never see your file contents",
+    "byFollowingStandards": ".",
+    "processingLocal": "Pick a tool, pick a file, and process it in your browser.",
     "gdpr": {
-      "title": "GDPR compliance",
-      "description": "Protects the personal data and privacy of individuals within the European Union."
+      "title": "No uploads",
+      "description": "Merge, split, compress, and more happen on your device—not on our servers."
     },
     "ccpa": {
-      "title": "CCPA compliance",
-      "description": "Gives California residents rights over how their personal information is collected, used, and shared."
+      "title": "No storage",
+      "description": "We don’t keep your documents or a history of which files you used."
     },
     "hipaa": {
-      "title": "HIPAA compliance",
-      "description": "Sets safeguards for handling sensitive health information in the United States healthcare system."
+      "title": "Less exposure",
+      "description": "Sensitive files don’t need to pass through a third-party server."
     }
   },
   "faq": {
@@ -201,42 +207,37 @@
     "questions": "Questions",
     "sectionTitle": "Frequently Asked Questions",
     "isFree": {
-      "question": "Is ToolEasy really free?",
-      "answer": "Yes, absolutely. All tools on ToolEasy are 100% free to use, with no file limits, no sign-ups, and no watermarks. We believe everyone deserves access to simple, powerful PDF tools without a paywall."
+      "question": "Do I have to pay?",
+      "answer": "No. Common tools are free to use—no signup and no watermarks."
     },
     "areFilesSecure": {
-      "question": "Are my files secure? Where are they processed?",
-      "answer": "Your files are as secure as possible because they never leave your computer. All processing happens directly in your web browser (client-side). We never upload your files to a server, so you maintain complete privacy and control over your documents."
+      "question": "Do my files go to your servers?",
+      "answer": "No. Processing happens in your browser. Files aren’t uploaded to us."
     },
     "platforms": {
-      "question": "Does it work on Mac, Windows, and Mobile?",
-      "answer": "Yes! Since ToolEasy runs entirely in your browser, it works on any operating system with a modern web browser, including Windows, macOS, Linux, iOS, and Android."
+      "question": "Does it work on computers and phones?",
+      "answer": "Yes. Open the site in a modern browser on Windows, Mac, or mobile."
     },
     "gdprCompliant": {
-      "question": "Is ToolEasy GDPR compliant?",
-      "answer": "Yes. ToolEasy is fully GDPR compliant. Since all file processing happens locally in your browser and we never collect or transmit your files to any server, we have no access to your data. This ensures you are always in control of your documents."
+      "question": "How do you handle privacy?",
+      "answer": "Files aren’t uploaded or stored. We don’t get your document contents, so there’s nothing for us to collect."
     },
     "dataStorage": {
-      "question": "Do you store or track any of my files?",
-      "answer": "No. We never store, track, or log your files. Everything you do on ToolEasy happens in your browser memory and disappears once you close the page. There are no uploads, no history logs, and no servers involved."
+      "question": "Do you keep usage history?",
+      "answer": "No. We don’t store your files or processing history. Close the page and that session ends."
     },
     "different": {
-      "question": "What makes ToolEasy different from other PDF tools?",
-      "answer": "Most PDF tools upload your files to a server for processing. ToolEasy never does that. We use secure, modern web technology to process your files directly in your browser. This means faster performance, stronger privacy, and complete peace of mind."
+      "question": "How is this different from other online PDF sites?",
+      "answer": "Many sites upload files to a server first. Here, processing runs in your browser instead."
     },
     "browserBased": {
-      "question": "How does browser-based processing keep me safe?",
-      "answer": "By running entirely inside your browser, ToolEasy ensures that your files never leave your device. This eliminates the risks of server hacks, data breaches, or unauthorized access. Your files remain yours—always."
+      "question": "Why emphasize on-device processing?",
+      "answer": "Your files stay on your device and don’t travel through our servers, which means less exposure."
     },
     "analytics": {
-      "question": "Do you use cookies or analytics to track me?",
-      "answer": "No. ToolEasy does not track you at all. We do not use cookies, analytics, or any tracking scripts, not even on the live website at usetooleasy.com. We never know who you are or what you do with the tools."
+      "question": "Do you track me with cookies?",
+      "answer": "We don’t do behavioral tracking or analytics that identify who you are or which files you used."
     }
-  },
-  "testimonials": {
-    "title": "What Our",
-    "users": "Users",
-    "say": "Say"
   },
   "support": {
     "title": "",
@@ -245,6 +246,7 @@
   },
   "footer": {
     "copyright": "© 2026 ToolEasy. All rights reserved.",
+    "companyEntity": "广州唤星科技有限公司",
     "version": "Version",
     "company": "Company",
     "aboutUs": "About Us",
@@ -296,47 +298,47 @@
   "about": {
     "hero": {
       "title": "We believe PDF tools should be",
-      "subtitle": "fast, private, and free.",
-      "noCompromises": "No compromises."
+      "subtitle": "simple, private, and free.",
+      "noCompromises": "No uploads. No signup."
     },
     "mission": {
-      "title": "Our Mission",
-      "description": "To provide the most comprehensive PDF toolbox that respects your privacy and never asks for payment. We believe essential document tools should be accessible to everyone, everywhere, without barriers."
+      "title": "About ToolEasy",
+      "description": "Practical online PDF tools: process files locally, no signup, and common tools stay free."
     },
     "philosophy": {
-      "label": "Our Core Philosophy",
-      "title": "Privacy First. Always.",
-      "description": "In an era where data is a commodity, we take a different approach. All processing for ToolEasy tools happens locally in your browser. This means your files never touch our servers, we never see your documents, and we don't track what you do. Your documents remain completely and unequivocally private. It's not just a feature; it's our foundation."
+      "label": "Approach",
+      "title": "On-device processing",
+      "description": "Merge, split, compress, and more run in your browser. Files aren’t sent to our servers."
     },
     "whyToolEasy": {
       "title": "Why",
       "speed": {
-        "title": "Built for Speed",
-        "description": "No waiting for uploads or downloads to a server. By processing files directly in your browser using modern web technologies like WebAssembly, we offer unparalleled speed for all our tools."
+        "title": "Straightforward",
+        "description": "No upload queues—pick a file and process it in your browser."
       },
       "free": {
-        "title": "Completely Free",
-        "description": "No trials, no subscriptions, no hidden fees, and no \"premium\" features held hostage. We believe powerful PDF tools should be a public utility, not a profit center."
+        "title": "Free to use",
+        "description": "Common tools are ready to use—no trial expiry or hidden paywall."
       },
       "noAccount": {
-        "title": "No Account Required",
-        "description": "Start using any tool immediately. We don't need your email, a password, or any personal information. Your workflow should be frictionless and anonymous."
+        "title": "No signup",
+        "description": "Open the page and start. No email or account required."
       },
       "growingToolkit": {
-        "title": "Growing Toolkit",
-        "description": "PDF tools today, with more utilities added over time — all in your browser, privacy-first."
+        "title": "More tools coming",
+        "description": "We focus on everyday PDF tasks first, then keep adding useful utilities."
       }
     },
     "cta": {
-      "title": "Ready to get started?",
-      "description": "Join thousands of users who trust ToolEasy for their daily document needs. Experience the difference that privacy and performance can make.",
-      "button": "Explore All Tools"
+      "title": "Get started",
+      "description": "Search on the homepage or open a tool from the top menu.",
+      "button": "Browse tools"
     }
   },
   "contact": {
     "title": "Get in Touch",
-    "subtitle": "We'd love to hear from you. Whether you have a question, feedback, or a feature request, please don't hesitate to reach out.",
-    "email": "You can reach us directly by email at:"
+    "subtitle": "Questions, feedback, or partnership ideas—email us anytime.",
+    "email": "Email:"
   },
   "multiTool": {
     "uploadPdfs": "Upload PDFs",

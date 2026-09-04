@@ -23,7 +23,8 @@ Disallow: /tmp/
 Disallow: /temp/
 Disallow: /uploads/
 
-# Disallow docs internal files (but allow /docs/ pages)
+# Disallow docs from public discovery
+Disallow: /docs/
 Disallow: /docs/assets/
 
 # Google-specific
