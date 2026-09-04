@@ -7,14 +7,20 @@ const __dirname = path.dirname(__filename);
 
 const DIST_DIR = path.resolve(__dirname, '../dist');
 const LOCALES_DIR = path.resolve(__dirname, '../public/locales');
-const SITE_URL = (process.env.SITE_URL || 'https://www.usetooleasy.com').replace(
-  /\/+$/,
-  ''
-);
+const SITE_URL = (
+  process.env.SITE_URL || 'https://www.usetooleasy.com'
+).replace(/\/+$/, '');
 const BASE_PATH = (process.env.BASE_URL || '/').replace(/\/$/, '');
 const HOST = new URL(SITE_URL).hostname;
 
-const NOINDEX_ALLOWLIST = new Set(['404.html', 'wasm-settings.html']);
+const NOINDEX_ALLOWLIST = new Set([
+  '404.html',
+  'wasm-settings.html',
+  // Landing-section redirects (content lives on index.html anchors)
+  'about.html',
+  'contact.html',
+  'faq.html',
+]);
 const SKIP_DIRS = new Set([
   'assets',
   'docs',

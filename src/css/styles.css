@@ -402,6 +402,18 @@
   max-width: min(72rem, 100%);
 }
 
+.hero-tool-finder--open .hero-tool-browse {
+  display: none;
+}
+
+.hero-tool-finder--open .hero-tool-embed {
+  display: block;
+}
+
+.hero-tool-browse {
+  display: block;
+}
+
 .hero-tool-finder__search {
   position: relative;
   display: flex;
@@ -606,11 +618,16 @@
 }
 
 .hero-tool-embed {
+  display: none;
   margin-top: 0.75rem;
   border: 1px solid rgba(55, 65, 81, 0.9);
   border-radius: 1rem;
   background: #111827;
   overflow: hidden;
+}
+
+.hero-tool-embed.hidden {
+  display: none;
 }
 
 .hero-tool-embed__bar {

@@ -7,11 +7,17 @@ const __dirname = path.dirname(__filename);
 
 const DIST_DIR = path.resolve(__dirname, '../dist');
 const LOCALES_DIR = path.resolve(__dirname, '../public/locales');
-const SITE_URL = (process.env.SITE_URL || 'https://www.usetooleasy.com').replace(
-  /\/+$/,
-  ''
-);
-const EXCLUDED_PAGES = new Set(['404', 'wasm-settings']);
+const SITE_URL = (
+  process.env.SITE_URL || 'https://www.usetooleasy.com'
+).replace(/\/+$/, '');
+const EXCLUDED_PAGES = new Set([
+  '404',
+  'wasm-settings',
+  // Redirect stubs → index anchors; keep out of sitemap (also noindex)
+  'about',
+  'contact',
+  'faq',
+]);
 
 const languages = fs.readdirSync(LOCALES_DIR).filter((file) => {
   return fs.statSync(path.join(LOCALES_DIR, file)).isDirectory();
@@ -35,9 +41,6 @@ const PRIORITY_MAP = {
   'pdf-to-docx': 0.9,
   'pdf-to-excel': 0.9,
   'pdf-to-jpg': 0.9,
-  about: 0.8,
-  faq: 0.8,
-  contact: 0.7,
   privacy: 0.5,
   terms: 0.5,
   licensing: 0.5,

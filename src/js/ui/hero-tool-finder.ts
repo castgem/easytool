@@ -90,6 +90,7 @@ export function initHeroToolFinder(): void {
   const heroResults = document.getElementById('hero-search-results');
   const heroLabel = document.getElementById('hero-search-label');
   const heroEmpty = document.getElementById('hero-search-empty');
+  const browsePanel = document.getElementById('hero-tool-browse');
   const embedPanel = document.getElementById('hero-tool-embed');
   const embedFrame = document.getElementById(
     'hero-tool-embed-frame'
@@ -105,31 +106,19 @@ export function initHeroToolFinder(): void {
   let lastBrowseMode: 'popular' | 'search' = 'popular';
   let lastBrowseTools = getPopularTools();
 
-  const setBrowseVisible = (visible: boolean) => {
-    heroResults.classList.toggle('hidden', !visible);
-    heroLabel?.classList.toggle(
-      'hidden',
-      !visible || lastBrowseTools.length === 0
-    );
-    if (heroEmpty && visible) {
-      heroEmpty.classList.toggle(
-        'hidden',
-        lastBrowseTools.length > 0 || lastBrowseMode === 'popular'
-      );
-    } else {
-      heroEmpty?.classList.add('hidden');
-    }
+  const setToolOpen = (open: boolean) => {
+    document.body.classList.toggle('hero-tool-open', open);
+    finder?.classList.toggle('hero-tool-finder--open', open);
+    embedPanel?.classList.toggle('hidden', !open);
+    browsePanel?.setAttribute('aria-hidden', open ? 'true' : 'false');
   };
 
   const closeTool = (updateHistory = true) => {
     activeToolId = null;
-    document.body.classList.remove('hero-tool-open');
-    finder?.classList.remove('hero-tool-finder--open');
-    embedPanel?.classList.add('hidden');
+    setToolOpen(false);
     if (embedFrame) {
       embedFrame.src = 'about:blank';
     }
-    setBrowseVisible(true);
     renderTools(lastBrowseTools, lastBrowseMode);
 
     if (updateHistory) {
@@ -149,10 +138,7 @@ export function initHeroToolFinder(): void {
 
     activeToolId = tool.id;
     const labels = getToolLabel(tool);
-    document.body.classList.add('hero-tool-open');
-    finder?.classList.add('hero-tool-finder--open');
-    setBrowseVisible(false);
-    embedPanel.classList.remove('hidden');
+    setToolOpen(true);
     if (embedTitle) embedTitle.textContent = labels.name;
     embedFrame.src = buildToolPageUrl(tool, true);
 
